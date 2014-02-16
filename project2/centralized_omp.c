@@ -25,9 +25,10 @@ typedef struct thread_struct
 
 /**
  *@brief Centralized Barrier Logic
- *@param - Thread structure
- *@param - Global Count of Threads
- *@param - Global Sense Variable
+ *@param thread - Thread structure
+ *@param countOfThreads - Global Count of Threads
+ *@param globalSense - Global Sense Variable
+ *@returns none
  */
 void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense)
 {
@@ -54,9 +55,9 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
     }
   }
 
+  int i = 0;
   while((*thread)->sense != *globalSense)
   {
-    int i = 0;
     i++;
       //printf("\nThread %d is still spinning on thread Sense %d", (*thread)->sense, (*thread)->sense);
   }
@@ -67,8 +68,8 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
 
 /**
  *@brief Main Function
- *@brief argc - Argument Count  
- *@brief argv - Argument Values
+ *@param argc - Argument Count  
+ *@param argv - Argument Values
  */
 int main(int argc, char** argv)
 {
@@ -81,6 +82,7 @@ int main(int argc, char** argv)
   if(numberOfThreads <=0 || numberOfBarriers <= 0)
   {
       printf("\nERROR: Number of threads/barriers cannot be negative!");
+      exit(1);
   }
 
   omp_set_num_threads(numberOfThreads);
@@ -128,5 +130,5 @@ int main(int argc, char** argv)
   
   }
 
-
+  return 0;
 }
