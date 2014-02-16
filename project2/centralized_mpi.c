@@ -44,7 +44,7 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
   
   (*thread)->sense = !(*thread)->sense;
   
-  if((*thread)->rank) == 0)
+  if(((*thread)->rank) == 0)
   {
       int counter = 0;
       int recvd = 0;
@@ -62,14 +62,14 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
   else
   {
       int sent = 0;
-      MPI_Send(&sent, 1, MPI_INT, master, MPI_COMM_WORLD);
+      MPI_Send(&sent, 1, MPI_INT, master, 1, MPI_COMM_WORLD);
   }
 
   //Receive or broadcast sense variable 
   MPI_Bcast(globalSense, 1, MPI_INT, master, MPI_COMM_WORLD);
 
   i = 0;
-  while((*thread)->sense != globalSense)
+  while((*thread)->sense != *globalSense)
   {
       i++;
   }
@@ -84,8 +84,10 @@ int main(int argc, char *argv[])
 {
     int i = 0, j, count = 0, countOfThreads, numberOfBarriers, globalSense = 1;
    
-    printf("\nEnter the number of barriers:");
-    scanf("%d", &numberOfBarriers);
+    //printf("\nEnter the number of barriers:");
+    //scanf("%d", &numberOfBarriers);
+
+    numberOfBarriers = 3;
 
     if(numberOfBarriers <= 0)
     {
@@ -111,7 +113,7 @@ int main(int argc, char *argv[])
         }
          printf("\nEntered thread %d  of %d threads at barrier %d", thread->rank, countOfThreads, i);
 
-        centralizedBarrierLogic(thread, &countOfThreads, &globalSense);
+        centralizedBarrierLogic(&thread, &countOfThreads, &globalSense);
 
         j = 0;
         
