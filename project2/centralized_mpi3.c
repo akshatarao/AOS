@@ -68,8 +68,8 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
       
      /* while(i < ((*countOfThreads)-1))
       {*/
-         printf("\nSending Global Sense %d", *globalSense); 
-	 MPI_Bcast(globalSense, 1, MPI_INT, master, MPI_COMM_WORLD);
+         printf("\nSending Global Sense to %d",i); 
+	 MPI_BCAST(globalSense, 1, MPI_INT, master, 1, MPI_COMM_WORLD);
   //	 i++;
   //    } 		
   }
@@ -78,19 +78,16 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
       MPI_Status status;
 
       int sent = 1;
-      printf("\nSending Data from process %d", (*thread)->rank);
+      //printf("\nSending Data from process %d", (*thread)->rank);
       MPI_Send(&sent, 1, MPI_INT, master, 1, MPI_COMM_WORLD);
       
-      int globalRcvdSense = 4;
+      int globalRcvdSense;
       
       do
-      {
-        printf("\n%d Trying to Receive from master", (*thread)->rank);	
-	MPI_Bcast(&globalRcvdSense, 1, MPI_INT, master, MPI_COMM_WORLD); 	
+      {	
+	MPI_Recv(&globalRcvdSense, 1, MPI_INT, master, 1, MPI_COMM_WORLD, &status); 	
+	printf("\nGlobal Sense %d Received by %d of Local: %d", globalRcvdSense, (*thread)->rank, (*thread)->sense);
       } while(globalRcvdSense != (*thread)->sense);
-	
-       	printf("\nGlobal Sense %d Received by %d of Local: %d", globalRcvdSense, (*thread)->rank, (*thread)->sense);
-	
 	
   }
 
