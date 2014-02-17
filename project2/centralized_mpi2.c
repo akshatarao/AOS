@@ -67,7 +67,6 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
       
       while(i < ((*countOfThreads)-1))
       {
-         
 	 MPI_Send(globalSense, 1, MPI_INT, i, 1, MPI_COMM_WORLD);
       } 		
   }
