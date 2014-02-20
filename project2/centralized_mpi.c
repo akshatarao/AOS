@@ -10,12 +10,15 @@
 #include<mpi.h>
 #include<stdlib.h>
 
-int numberOfThreads;
-int threadCounter;
-int numberOfBarriers;
-int barrierCounter;
-int globalSense = 0;
+#define NUMBER_OF_BARRIERS 3
 
+int numberOfThreads; //Number of threads
+int threadCounter; //Counter for Threads
+int numberOfBarriers; //Number for Barriers
+int barrierCounter; //Counter for Barriers
+int globalSense = 0; //Global Sense
+
+//Thread Structure
 typedef struct thread_struct
 {
     int count; //local counter
@@ -38,23 +41,25 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
    int master = *countOfThreads - 1;
 
 
+  //Busy Wait	
    while(i < 9999)
       i++;
 
-  
+  //Reverse Thread Sense
   (*thread)->sense = !(*thread)->sense;
   
+  //If the Thread is the main Master
   if(((*thread)->rank) == master)
   {
       int counter = 0;
       int recvd;
       MPI_Status status;
 
+      //Wait till all the other threads have completed
       while(counter < ((*countOfThreads) - 1))
       {
          
 	//printf("\nReceiving data from Process %d", counter); 
-     	  MPI_Recv(&recvd, 1, MPI_INT, counter, 1, MPI_COMM_WORLD, &status);          //counter++; 
 	//printf("\nReceived data %d from Process %d", recvd, counter);	
 	counter++;
       }
@@ -63,33 +68,29 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
       *globalSense = (*thread)->sense;
       printf("\nReversing Global Sense %d", *globalSense);
 
-  
       int i = 0;
       
-     /* while(i < ((*countOfThreads)-1))
-      {*/
-         printf("\nSending Global Sense %d", *globalSense); 
-	 MPI_Bcast(globalSense, 1, MPI_INT, master, MPI_COMM_WORLD);
-  //	 i++;
-  //    } 		
+      // printf("\nSending Global Sense %d", *globalSense); 
+      MPI_Bcast(globalSense, 1, MPI_INT, master, MPI_COMM_WORLD);
   }
   else
   {
       MPI_Status status;
 
       int sent = 1;
-      printf("\nSending Data from process %d", (*thread)->rank);
+      //printf("\nSending Data from process %d", (*thread)->rank);
       MPI_Send(&sent, 1, MPI_INT, master, 1, MPI_COMM_WORLD);
-      
-      int globalRcvdSense = 4;
+      printf("\nThread work completed %d", (*thread)->rank);	
+	 
+      int globalRcvdSense = 4;//arbitrary value
       
       do
       {
-        printf("\n%d Trying to Receive from master", (*thread)->rank);	
+        //printf("\n%d Trying to Receive from master", (*thread)->rank);	
 	MPI_Bcast(&globalRcvdSense, 1, MPI_INT, master, MPI_COMM_WORLD); 	
       } while(globalRcvdSense != (*thread)->sense);
 	
-       	printf("\nGlobal Sense %d Received by %d of Local: %d", globalRcvdSense, (*thread)->rank, (*thread)->sense);
+       	//printf("\nGlobal Sense %d Received by %d of Local: %d", globalRcvdSense, (*thread)->rank, (*thread)->sense);
 	
 	
   }
@@ -108,15 +109,19 @@ int main(int argc, char *argv[])
     //printf("\nEnter the number of barriers:");
     //scanf("%d", &numberOfBarriers);
 
-    numberOfBarriers = 2;
+    numberOfBarriers = NUMBER_OF_BARRIERS;
 
+   //Incase Number of Barriers is taken as user input
     if(numberOfBarriers <= 0)
     {
         printf("\nERROR: Number of barriers cannot be negative!");
         exit(1);
     }
 
-  	MPI_Init(&argc, &argv);
+    //Initialize MPI Datastructures
+    MPI_Init(&argc, &argv);
+
+   //Obtain the number of threads finally allocated
     MPI_Comm_size( MPI_COMM_WORLD, &countOfThreads);
 
     Thread* thread;
@@ -124,28 +129,34 @@ int main(int argc, char *argv[])
     thread->sense = 1;
     MPI_Comm_rank(MPI_COMM_WORLD, &((thread)->rank));
 
+    //Iterating through the barriers
     for(i=0; i < numberOfBarriers; i++)
     {
         j = 0;
 
+	//Busy Wait
         while(j < 9999)
         {
             j++;
         }
-         printf("\nEntered thread %d  of %d threads at barrier %d", thread->rank, countOfThreads, i);
 
-        centralizedBarrierLogic(&thread, &countOfThreads, &globalSense);
+        printf("\nEntered thread %d  of %d threads at barrier %d", thread->rank, countOfThreads, i);
+
+        //Enter thread + barrier logic
+	centralizedBarrierLogic(&thread, &countOfThreads, &globalSense);
 
         j = 0;
         
+	//Busy Wait
         while(j < 9999)
         {
             j++;
         }
 
-        printf("\nCompleted thread %d  of %d threads at barrier %d", thread->rank, countOfThreads, i);
+ //       printf("\nCompleted thread %d  of %d threads at barrier %d", thread->rank, countOfThreads, i);
     }
     
-   MPI_Finalize(); 
+  MPI_Finalize(); 
+  
   return 0;
 }
