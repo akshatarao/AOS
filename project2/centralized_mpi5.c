@@ -75,7 +75,6 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
 	do  
 	{
 		MPI_Recv(&recvd, 1, MPI_INT, counter, 1, MPI_COMM_WORLD, &status);         
-	//	printf("\nReceived: %d", recvd); 
 	}while(recvd != COMPLETED);
 	
 	/*fp = fopen("test.log","a+");
@@ -83,13 +82,12 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
   	fclose(fp);*/
 	//fflush(stdout);
 
+        //Announce each time a thread completes
 	counter++;
 	MPI_Bcast(&counter, 1, MPI_INT, master, MPI_COMM_WORLD);
       }
 
-      //Reverse Sense Variable
-      *globalSense = (*thread)->sense;
-
+      //Add last thread as completed
       counter++;
       MPI_Bcast(&counter, 1, MPI_INT, master, MPI_COMM_WORLD);
 	      
@@ -97,11 +95,10 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
       fprintf(fp,"\nCompleted all threads\n");
       fclose(fp);
 
-//      fflush(stdout);
+      *globalSense = (*thread)->sense;	
       fp = fopen("test.log","a+"); 
       fprintf(fp,"\nReversing Global Sense %d\n", *globalSense);
       fclose(fp);
-//      fflush(stdout);
 
       //As all threads have completed, broadcast the green signal! 
       MPI_Bcast(globalSense, 1, MPI_INT, master, MPI_COMM_WORLD);
@@ -119,10 +116,11 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
 
       int threadCounter;    
 
+     //Spin on the thread completed count
       do
       {
 	
-	do
+	do //As Bcast Receive is not blocking, wait until a valid counter value has been passed
 	{
 		threadCounter = 0;
 		MPI_Bcast(&threadCounter, 1, MPI_INT, master, MPI_COMM_WORLD);
@@ -132,6 +130,7 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
 		
       }while((*thread)->count < *countOfThreads);
 	
+      //Spin on sense reversal
       //Block the thread till it has received the Global Received Sense Flag from Master
       do
       {
@@ -143,7 +142,6 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
    /*   fp = fopen("test.log","a+");
       fprintf(fp,"\nGlobal Sense %d Received by %d of Local: %d\n", globalRcvdSense, (*thread)->rank, (*thread)->sense);
       fclose(fp);	 */
-      //fflush(stdout);	
   }
 
 
@@ -157,7 +155,6 @@ int main(int argc, char *argv[])
 {
     int i = 0, j, count = 0, countOfThreads, numberOfBarriers, globalSense = 1;
 
-//    fp = fopen("test.log", "a");	   
     numberOfBarriers = NUMBER_OF_BARRIERS;
 
     //Initialize the MPI datastructures 	
@@ -186,7 +183,6 @@ int main(int argc, char *argv[])
 	fp = fopen("test.log", "a+"); 
         fprintf(fp,"\nEntered thread %d  of %d threads at barrier %d", thread->rank, countOfThreads, i);
         fclose(fp);	
-	//fflush(stdout);
 
         centralizedBarrierLogic(&thread, &countOfThreads, &globalSense);
 

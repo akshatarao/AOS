@@ -1,27 +1,21 @@
 
-Entered thread 1  of 5 threads at barrier 0
-Entered thread 2  of 5 threads at barrier 0
-Entered thread 0  of 5 threads at barrier 0
-Entered thread 3  of 5 threads at barrier 0
-Entered thread 4  of 5 threads at barrier 0
+Entered thread 2  of 3 threads at barrier 0
+Entered thread 1  of 3 threads at barrier 0
+Entered thread 0  of 3 threads at barrier 0
 Completed all threads
 
 Reversing Global Sense 5
 
-Entered thread 4  of 5 threads at barrier 1
-Entered thread 1  of 5 threads at barrier 1
-Entered thread 0  of 5 threads at barrier 1
-Entered thread 2  of 5 threads at barrier 1
-Entered thread 3  of 5 threads at barrier 1
+Entered thread 0  of 3 threads at barrier 1
+Entered thread 1  of 3 threads at barrier 1
+Entered thread 2  of 3 threads at barrier 1
 Completed all threads
 
 Reversing Global Sense 10
 
-Entered thread 4  of 5 threads at barrier 2
-Entered thread 1  of 5 threads at barrier 2
-Entered thread 0  of 5 threads at barrier 2
-Entered thread 2  of 5 threads at barrier 2
-Entered thread 3  of 5 threads at barrier 2
+Entered thread 0  of 3 threads at barrier 2
+Entered thread 1  of 3 threads at barrier 2
+Entered thread 2  of 3 threads at barrier 2
 Completed all threads
 
 Reversing Global Sense 5
