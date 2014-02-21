@@ -9,6 +9,7 @@
 #include<stdio.h>
 #include<omp.h>
 #include<stdlib.h>
+#include<centralized_omp.h>
 
 int numberOfThreads;
 int threadCounter;
@@ -66,19 +67,8 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
 } 
 
 
-/**
- *@brief Main Function
- *@param argc - Argument Count  
- *@param argv - Argument Values
- */
-int main(int argc, char** argv)
+void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 {
-  printf("\nEnter the number of threads:");
-  scanf("%d", &numberOfThreads);
-
-  printf("\nEnter the number of barriers:");
-  scanf("%d", &numberOfBarriers);
-
   if(numberOfThreads <=0 || numberOfBarriers <= 0)
   {
       printf("\nERROR: Number of threads/barriers cannot be negative!");
@@ -155,6 +145,23 @@ int main(int argc, char** argv)
         totalBarrierTime += barrierTimeCounter[i];
   }
 
-  printf("\nAverage time taken at Barriers is %f", (float)totalBarrierTime/numberOfBarriers); 	
+  printf("\nAverage time taken at Barriers is %f\n", (float)totalBarrierTime/numberOfBarriers); 	
+}
+
+
+/**
+ *@brief Main Function
+ *@param argc - Argument Count  
+ *@param argv - Argument Values
+ */
+int main(int argc, char** argv)
+{
+  printf("\nEnter the number of threads:");
+  scanf("%d", &numberOfThreads);
+
+  printf("\nEnter the number of barriers:");
+  scanf("%d", &numberOfBarriers);
+
+  centralizedOMP(numberOfThreads, numberOfBarriers);
   return 0;
 }
