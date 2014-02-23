@@ -6,9 +6,7 @@
 
 
 int numberOfThreads;
-int threadCounter;
 int numberOfBarriers;
-
 pthread_mutex_t lock;
 
 typedef struct thread_struct
@@ -20,103 +18,102 @@ typedef struct thread_struct
 
 void disseminationBarrier(Thread* thread,Thread** threadList,int threadId)
 {
-  int r,s = 0,t,index,neighborIndex;
-  printf("total num of Threads%d\n", numberOfThreads);
-  int numOfRounds = ceil(log(numberOfThreads)/log(2));
+    int r,s = 0,t,neighborIndex;
+    int numOfRounds = ceil(log(numberOfThreads)/log(2));
 
-  //Busy Wait
-  while(s < 9999)
-      s++;
+    //Busy Wait
+    while(s < 9999)
+        s++;
 
-      printf("index = %d\n",index);
-      for(t=0;t<numOfRounds;t++)
-	{	//mutex lock
+    for(t=0;t<numOfRounds;t++) {	
+        pthread_mutex_lock(&lock);
 		neighborIndex = fmod((threadId + pow(2,t)),numberOfThreads);
-		pthread_mutex_lock(&lock);
+		printf("Thread %d has neighbor index %d in round %d\n",threadId, neighborIndex, t);
 		Thread* neighborThread = *(threadList + neighborIndex);
+		thread->sentCount = thread->sentCount + 1;
 		neighborThread->receivingCount = neighborThread->receivingCount + 1;
+		printf("%d thread's receiving count is %d\n",thread->threadID,thread->receivingCount);
+		printf("%d Neighbor thread's receiving count is %d\n",neighborThread->threadID,neighborThread->receivingCount);
+		printf("%d thread's sent count is %d\n",thread->threadID,thread->sentCount);
 		pthread_mutex_unlock(&lock);
-		//Thread* curr
 		while((*(threadList+threadId))->receivingCount < t+1);
+		while((*(threadList+threadId))->sentCount != t+1);	
 	}
-
+	
+        printf("%d exit check begin\n", thread->threadID);
+	while((*(threadList+threadId))->receivingCount != numOfRounds);
+        while((*(threadList+threadId))->sentCount != numOfRounds);
+        (*(threadList+threadId))->receivingCount = 0;
+        (*(threadList+threadId))->sentCount = 0;
+        printf("%d exit check end\n", thread->threadID);
 } 
 
 int main(int argc, char** argv)
 {
 
-  double startTime,endTime;
+    double startTime,endTime;
 
-  printf("\nEnter the number of threads:");
-  scanf("%d", &numberOfThreads);
+    printf("\nEnter the number of threads: ");
+    scanf("%d", &numberOfThreads);
 
-  printf("\nEnter the number of barriers:");
-  scanf("%d", &numberOfBarriers);
+    printf("Enter the number of barriers: ");
+    scanf("%d", &numberOfBarriers);
 
-  if(numberOfThreads <=0 || numberOfBarriers <= 0)
-  {
+    if(numberOfThreads <=0 || numberOfBarriers <= 0) {
       printf("\nERROR: Number of threads/barriers cannot be negative!");
       exit(1);
-  }
+    }
 
 
-  pthread_mutex_init(&lock,NULL);
+    pthread_mutex_init(&lock,NULL);
 
-  int k;
-  omp_set_num_threads(numberOfThreads);
-  int rounds = ceil(log(numberOfThreads)/log(2));
-  Thread** threadList = malloc(numberOfThreads*sizeof(Thread*));
+    int k,l;
+    
+    int barrierArray[numberOfBarriers]; 
+    omp_set_num_threads(numberOfThreads);
+    int rounds = ceil(log(numberOfThreads)/log(2));
+    Thread** threadList = malloc(numberOfThreads*sizeof(Thread*));
+ 
+    for(k = 0; k < numberOfThreads; k++){
+        Thread* thread;
+        thread = (Thread*) malloc(sizeof(Thread));
+        thread->receivingCount = 0;
+        thread->sentCount = 0;
+        thread->threadID = k;
+        *(threadList + k) = thread;
+    } 
 
-  //Thread Logic begins here
-  #pragma omp parallel shared(numberOfThreads,rounds)
-  {
+    for(l = 0;l < numberOfBarriers; l++) 
+     	barrierArray[l] =  0;
+
+    //Thread Logic begins here
+    #pragma omp parallel shared(numberOfThreads,rounds)
+    {
       //Update numberOfThreads to the correct value
-      numberOfThreads = omp_get_num_threads(); 
-      threadCounter = numberOfThreads;
-      int threadId = omp_get_thread_num();
-
-      Thread* thread;
-      thread = (Thread*)malloc(sizeof(Thread));
-      thread->receivingCount = 0;
-      thread->sentCount = 0;
-      thread->threadID = omp_get_thread_num();
-
-      *(threadList + threadId) = thread;	
-      
-
-      int i = 0, j =0,loopCount =0, threadID;
-
-      for(i = 0; i <numberOfBarriers; i++)
-      {
+	int i = 0,j;
+        numberOfThreads = omp_get_num_threads(); 
+        int threadId = omp_get_thread_num();
+        Thread* thread = *(threadList + threadId);
+ 
+        for(i = 0; i <numberOfBarriers; i++) {
           //Busy Wait
-          j = 0;
-          while(j < 9999)
-          {
-              j++;
-          }
-        
-          printf("\nEntered thread %d  of %d threads at barrier %d", thread->threadID, numberOfThreads, i);
+            j = 0;
+            while(j < 9999){
+                j++;
+            }
+            printf("Entered thread %d of %d threads at barrier %d\n", thread->threadID, numberOfThreads-1, i);
 	  
-
-	  /*for(k = 0;k < numberOfThreads;k++){
-		for(loopCount = 0;loopCount < rounds;loopCount++){
-	 		sentCount++;
-			next = (k + pow(2,loopCount))%numOfThreads;*/
-			startTime = omp_get_wtime();
-          		disseminationBarrier(thread,threadList,threadId);
-			endTime = omp_get_wtime();
-          //Busy Wait
-          j = 0;
-          while(j < 9999)
-          {
-              j++;
-          }
-
-          printf("\nCompleted thread %d of %d threads at barrier %d", thread->threadID, numberOfThreads, i);
-
-      }   
-  printf("Time spent in barrier by thread %d is %f\n", thread->threadID, endTime-startTime);
-  }
-
-  return 0;
+	   startTime = omp_get_wtime();
+           disseminationBarrier(thread,threadList,threadId);
+	   printf("Completed thread %d of %d threads at barrier %d\n", thread->threadID, numberOfThreads-1, i);
+	   pthread_mutex_lock(&lock);
+	   barrierArray[i] = barrierArray[i] + 1;
+	   printf("barrierCheck is %d\n", barrierArray[i]);  
+	   pthread_mutex_unlock(&lock);
+           while(barrierArray[i]!= numberOfThreads);
+	   endTime = omp_get_wtime();     
+	}
+        printf("Time spent in barrier by thread %d is %f\n",thread->threadID, endTime-startTime);
+    }
+return 0;
 }
