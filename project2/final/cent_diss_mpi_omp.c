@@ -1,17 +1,45 @@
-/**
- *@author Akshata Rao
- */
-
-/**
- *@file centralized_mpi.c
- */
-
 #include<stdio.h>
-#include<mpi.h>
+#include<omp.h>
 #include<stdlib.h>
+#include<math.h>
+#include<pthread.h>
+#include<mpi.h>
 #include<centralized_mpi.h>
 
-FILE* fp;
+int numberOfThreads;
+int threadCounter;
+int numberOfBarriers;
+pthread_mutex_t lock;
+
+typedef struct thread_struct
+{
+    int receivingCount; //local counter
+    int sentCount;
+    int threadID;
+}Thread;
+
+void disseminationBarrier(Thread* thread,Thread** threadList,int threadId)
+{
+  int r,s = 0,t,index,neighborIndex;
+  printf("total num of Threads%d\n", numberOfThreads);
+  int numOfRounds = ceil(log(numberOfThreads)/log(2));
+
+  //Busy Wait
+  while(s < 9999)
+      s++;
+
+      for(t=0;t<numOfRounds;t++)
+	{	//mutex lock
+		neighborIndex = fmod((threadId + pow(2,t)),numberOfThreads);
+		pthread_mutex_lock(&lock);
+		Thread* neighborThread = *(threadList + neighborIndex);
+		neighborThread->receivingCount = neighborThread->receivingCount + 1;
+		pthread_mutex_unlock(&lock);
+		//Thread* curr
+		while((*(threadList+threadId))->receivingCount < t+1);
+	}
+
+} 
 
 /**
  *@brief Centralized Processor Barrier Logic

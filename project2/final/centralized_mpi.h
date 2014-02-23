@@ -15,7 +15,7 @@
 #include<mpi.h>
 #include<stdlib.h>
 
-#define NUMBER_OF_BARRIERS 3
+#define NUMBER_OF_BARRIERS 1
 
 //Sense Variable States
 #define SENSE_0 5
@@ -25,25 +25,19 @@
 #define COMPLETED 1
 #define NOT_COMPLETED 0 
 
-int numberOfThreads;
-int threadCounter;
-int numberOfBarriers;
-int barrierCounter;
-int globalSense = 0;
-
 /**
 *
-*Thread Structure
+*Process Structure
 */
-typedef struct thread_struct
+typedef struct process_struct
 {
     int count; //local counter
     int sense; //local sense
     int localBarrierCounter; //localBarrierCounter
     int rank;//Processor ID
-}Thread;
+}Process;
 
-void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense, int barrierID);
+void centralizedProcessorBarrierLogic(Process **process, int* countOfProcesses, int* globalSense, int barrierID);
 void centralizedMPI(int argc, char* argv[], int numberOfBarriers);
 
 #endif

@@ -12,13 +12,15 @@
 #include<centralized_omp.h>
 
 /**
- *@brief Centralized Barrier Logic
+ *@brief Centralized Thread Barrier Logic
  *@param thread - Thread structure
  *@param countOfThreads - Global Count of Threads
  *@param globalSense - Global Sense Variable
  *@returns none
  */
-void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense)
+
+int globalThreadSense = 0;
+void centralizedThreadBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense)
 {
   int i = 0;
 
@@ -70,13 +72,14 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
   omp_set_num_threads(numberOfThreads);
 
-  globalSense = 1;
+  globalThreadSense = 1;
 
   //Thread Logic begins here
-  #pragma omp parallel shared(globalSense, numberOfThreads)
+  #pragma omp parallel shared(globalThreadSense, numberOfThreads)
   {
 
-      double startTime, endTime, totalTime;	
+     struct timeval startTime, endTime;
+     double totalTime;	
       //Update numberOfThreads to the correct value
       numberOfThreads = omp_get_num_threads(); 
       threadCounter = numberOfThreads;
@@ -100,10 +103,11 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
         
           printf("\nEntered thread %d  of %d threads at barrier %d", threadID, numberOfThreads, i);
 
-	  startTime = omp_get_wtime();		
-          centralizedBarrierLogic(&thread, &threadCounter, &globalSense);
-	  endTime = omp_get_wtime();
-	  totalTime = endTime-startTime; 	
+	  gettimeofday(&startTime, NULL);		
+          centralizedThreadBarrierLogic(&thread, &threadCounter, &globalThreadSense);
+	  gettimeofday(&endTime, NULL);
+
+	  totalTime = (endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec); 	
 	
 	  printf("\nTotal time at barrier %d by thread %d is %f", i, threadID, totalTime);	
 	  #pragma omp critical 
@@ -118,7 +122,7 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
               j++;
           }
 
-          printf("\nCompleted thread %d of %d threads at barrier %d", threadID, numberOfThreads, i, thread->sense, globalSense);
+          printf("\nCompleted thread %d of %d threads at barrier %d", threadID, numberOfThreads, i, thread->sense, globalThreadSense);
 
       }   
   
@@ -139,7 +143,7 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
  *@brief Main Function
  *@param argc - Argument Count  
  *@param argv - Argument Values
- */
+ *
 int main(int argc, char** argv)
 {
   printf("\nEnter the number of threads:");
@@ -150,4 +154,4 @@ int main(int argc, char** argv)
 
   centralizedOMP(numberOfThreads, numberOfBarriers);
   return 0;
-}
+}*/

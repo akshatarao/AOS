@@ -1,0 +1,31 @@
+
+Entered process 2  of 3 processes at barrier 0
+Entered process 1  of 3 processes at barrier 0
+Entered process 0  of 3 processes at barrier 0
+Completed all processes
+
+Reversing Global Sense 5
+
+Total time spent by Processor 2 at barrier 0 is 57.000000
+Total time spent by Processor 1 at barrier 0 is 49.000000
+Total time spent by Processor 0 at barrier 0 is 44.000000
+Entered process 2  of 3 processes at barrier 1
+Entered process 1  of 3 processes at barrier 1
+Entered process 0  of 3 processes at barrier 1
+Completed all processes
+
+Reversing Global Sense 10
+
+Total time spent by Processor 2 at barrier 1 is 41.000000
+Total time spent by Processor 1 at barrier 1 is 27.000000
+Total time spent by Processor 0 at barrier 1 is 26.000000
+Entered process 2  of 3 processes at barrier 2
+Entered process 1  of 3 processes at barrier 2
+Entered process 0  of 3 processes at barrier 2
+Completed all processes
+
+Reversing Global Sense 5
+
+Total time spent by Processor 2 at barrier 2 is 40.000000
+Total time spent by Processor 1 at barrier 2 is 22.000000
+Total time spent by Processor 0 at barrier 2 is 21.000000

@@ -16,7 +16,6 @@ int numberOfThreads;
 int threadCounter;
 int numberOfBarriers;
 int barrierCounter;
-int globalSense = 0;
 float barrierTimeCounter[10];
 
 typedef struct thread_struct
