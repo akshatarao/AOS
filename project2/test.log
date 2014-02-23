@@ -1,21 +1,28 @@
 
-Entered thread 2  of 3 threads at barrier 0
-Entered thread 1  of 3 threads at barrier 0
 Entered thread 0  of 3 threads at barrier 0
+Entered thread 1  of 3 threads at barrier 0
+Entered thread 2  of 3 threads at barrier 0
 Completed all threads
 
 Reversing Global Sense 5
 
+Total time spent by Processor 0 at barrier 0 is 0.000066
+Total time spent by Processor 1 at barrier 0 is 0.000059
+Entered thread 2  of 3 threads at barrier 1
 Entered thread 0  of 3 threads at barrier 1
 Entered thread 1  of 3 threads at barrier 1
-Entered thread 2  of 3 threads at barrier 1
 Completed all threads
 
 Reversing Global Sense 10
 
+Total time spent by Processor 0 at barrier 1 is 0.000043
+Total time spent by Processor 1 at barrier 1 is 0.000032
+Entered thread 2  of 3 threads at barrier 2
 Entered thread 0  of 3 threads at barrier 2
 Entered thread 1  of 3 threads at barrier 2
-Entered thread 2  of 3 threads at barrier 2
 Completed all threads
 
 Reversing Global Sense 5
+
+Total time spent by Processor 0 at barrier 2 is 0.000042
+Total time spent by Processor 1 at barrier 2 is 0.000029

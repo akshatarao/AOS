@@ -98,25 +98,13 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
 
 }
 
-
-/**
- *@Main Function
- */
-int main(int argc, char *argv[])
+void centralizedMPI(int numberOfBarriers)
 {
-    int i = 0, j, count = 0, countOfThreads, numberOfBarriers, globalSense = 1;
+    int i = 0, j, count = 0, countOfThreads, globalSense = 1;
    
     //printf("\nEnter the number of barriers:");
     //scanf("%d", &numberOfBarriers);
 
-    numberOfBarriers = NUMBER_OF_BARRIERS;
-
-   //Incase Number of Barriers is taken as user input
-    if(numberOfBarriers <= 0)
-    {
-        printf("\nERROR: Number of barriers cannot be negative!");
-        exit(1);
-    }
 
     //Initialize MPI Datastructures
     MPI_Init(&argc, &argv);
@@ -159,4 +147,22 @@ int main(int argc, char *argv[])
   MPI_Finalize(); 
   
   return 0;
+}
+
+/**
+ *@Main Function
+ */
+int main(int argc, char *argv[])
+{
+   numberOfBarriers = NUMBER_OF_BARRIERS;
+
+   //Incase Number of Barriers is taken as user input
+    if(numberOfBarriers <= 0)
+    {
+        printf("\nERROR: Number of barriers cannot be negative!");
+        exit(1);
+    }
+   
+ centralizedMPI(numberOfBarriers);
+ return 0;
 }
