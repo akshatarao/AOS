@@ -54,11 +54,13 @@ int main(int argc, char** argv)
 
     struct timeval startTime,endTime;
 
-    printf("\nEnter the number of threads: ");
-    scanf("%d", &numberOfThreads);
-
-    printf("Enter the number of barriers: ");
-    scanf("%d", &numberOfBarriers);
+    if(argc < 3)
+    {
+	printf("\nSyntax: <executable> numberOfThreads numberOfBarriers");	
+    }
+ 
+    numberOfThreads = atoi(argv[1]);
+    numberOfBarriers = atoi(argv[2]);
 
     if(numberOfThreads <=0 || numberOfBarriers <= 0) {
       printf("\nERROR: Number of threads/barriers cannot be negative!");
