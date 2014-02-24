@@ -15,7 +15,7 @@
 
 
 struct timeval startTime, endTime;
-
+double totalTime = 0.0;
 /**
  *Thread Structure
  */
@@ -258,10 +258,11 @@ void centralizedMPI(int argc, char* argv[], int numberOfBarriers, int numberOfTh
 
         centralizedProcessorBarrierLogic(&process, &countOfProcesses, &globalSense, i);
 	//printf("\nTotal time spent by Processor %d at barrier %d is %lf",(process)->rank, i, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
-	printf("\n%lf",(double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
+	totalTime += ((double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
 
     }
   
+   printf("\n%lf", (double)totalTime/numberOfBarriers);
   //Finalize MPI  
   MPI_Finalize(); 
   
@@ -280,6 +281,12 @@ int main(int argc, char** argv)
    int numberOfThreadBarriers;
    int numberOfProcessorBarriers;
 
+  if(argc < 4)
+  {
+    printf("\nSyntax: <executable> numberOfThreads numberOfThreadBarriers numberOfProcessorBarriers\n");
+    exit(1);
+  }
+	
    numberOfThreads = atoi(argv[1]);
    numberOfThreadBarriers = atoi(argv[2]);
    numberOfProcessorBarriers = atoi(argv[3]);
