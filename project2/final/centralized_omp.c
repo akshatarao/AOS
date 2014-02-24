@@ -52,7 +52,7 @@ void centralizedThreadBarrierLogic(Thread **thread, int* countOfThreads, int* gl
   while((*thread)->sense != *globalSense)
   {
     i++;
-      //printf("\nThread %d is still spinning on thread Sense %d", (*thread)->sense, (*thread)->sense);
+     // printf("\nThread %d is still spinning on thread Sense %d", (*thread)->sense, (*thread)->sense);
   }
       ;
 
@@ -128,10 +128,6 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
           printf("\nCompleted thread %d of %d threads at barrier %d %d", threadID, numberOfThreads, i, thread->sense, globalThreadSense);
 
-	  if(threadCounter == 0)
-	  {
-		globalThreadSense = 1;
-	  }
       }   
   
   }

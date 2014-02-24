@@ -252,9 +252,13 @@ void centralizedMPI(int argc, char* argv[], int numberOfBarriers, int numberOfTh
     for(i=0; i < numberOfBarriers; i++)
     {
 	gettimeofday(&startTime,NULL);
+
+	//Fork the threads on this processor - Await completion for this barrier
 	disseminationBarrierInit(numberOfThreads, numberOfThreadBarriers);
+
         centralizedProcessorBarrierLogic(&process, &countOfProcesses, &globalSense, i);
-	printf("\nTotal time spent by Processor %d at barrier %d is %lf",(process)->rank, i, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
+	//printf("\nTotal time spent by Processor %d at barrier %d is %lf",(process)->rank, i, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
+	printf("\n%lf",(double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
 
     }
   
@@ -286,11 +290,6 @@ int main(int argc, char** argv)
        exit(1);
    }
 
-   printf("\nNumber Of Threads: %d", numberOfThreads);
-   printf("\nNumber of Thread Barriers: %d", numberOfThreadBarriers);
-   printf("\nNumber of Processor Barriers: %d", numberOfProcessorBarriers);
 
-
-    //Once the threads have completed in the processor, await the other processors for completion
     centralizedMPI(argc, argv, numberOfProcessorBarriers, numberOfThreads, numberOfThreadBarriers);
 }    
