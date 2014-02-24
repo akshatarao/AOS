@@ -26,26 +26,6 @@ typedef struct thread_struct
     int threadID;
 }Thread;
 
-//Sense Variable States
-#define SENSE_0 5
-#define SENSE_1 10
-
-//Thread States
-#define COMPLETED 1
-#define NOT_COMPLETED 0 
-
-/**
-*
-*Process Structure
-*/
-typedef struct process_struct
-{
-    int count; //local counter
-    int sense; //local sense
-    int localBarrierCounter; //localBarrierCounter
-    int rank;//Processor ID
-}Process;
-
 /**
  *@brief - Dissemination Barrier Logic
  *@param - thread - Thread
@@ -254,7 +234,7 @@ void centralizedMPI(int argc, char* argv[], int numberOfBarriers, int numberOfTh
 	gettimeofday(&startTime,NULL);
 	disseminationBarrierInit(numberOfThreads, numberOfThreadBarriers);
         centralizedProcessorBarrierLogic(&process, &countOfProcesses, &globalSense, i);
-	printf("\nTotal time spent by Processor %d at barrier %d is %lf",(process)->rank, i, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
+	printf("\nTotal time spent by Processor %d at barrier %d is %lf",(*process)->rank, i, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
 
     }
   

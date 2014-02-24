@@ -46,7 +46,9 @@ void centralizedThreadBarrierLogic(Thread **thread, int* countOfThreads, int* gl
         *globalSense = (*thread)->sense;
     }
   }
-
+  
+  i = 0;
+  
   while((*thread)->sense != *globalSense)
   {
     i++;

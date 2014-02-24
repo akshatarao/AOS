@@ -114,8 +114,9 @@ int main(int argc, char** argv)
 	   while(barrierArray[i]!= numberOfThreads);
 	   
            gettimeofday(&endTime, NULL);
+	   printf("Time spent in barrier by thread %d is %f\n",thread->threadID, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));	
 	}
-        printf("Time spent in barrier by thread %d is %f\n",thread->threadID, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
+        
     }
 return 0;
 }
