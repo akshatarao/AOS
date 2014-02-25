@@ -15,7 +15,7 @@
 #include<mpi.h>
 #include<stdlib.h>
 
-#define NUMBER_OF_BARRIERS 3
+#define NUMBER_OF_BARRIERS 1
 
 //Sense Variable States
 #define SENSE_0 5

@@ -1,18 +1,45 @@
-/**
- *@author Akshata Rao
- */
-
-/**
- *@file centralized_mpi.c
- */
-
 #include<stdio.h>
-#include<mpi.h>
+#include<omp.h>
 #include<stdlib.h>
+#include<math.h>
+#include<pthread.h>
+#include<mpi.h>
 #include<centralized_mpi.h>
 
-FILE* fp;
-double totalTime = 0.0;
+int numberOfThreads;
+int threadCounter;
+int numberOfBarriers;
+pthread_mutex_t lock;
+
+typedef struct thread_struct
+{
+    int receivingCount; //local counter
+    int sentCount;
+    int threadID;
+}Thread;
+
+void disseminationBarrier(Thread* thread,Thread** threadList,int threadId)
+{
+  int r,s = 0,t,index,neighborIndex;
+  printf("total num of Threads%d\n", numberOfThreads);
+  int numOfRounds = ceil(log(numberOfThreads)/log(2));
+
+  //Busy Wait
+  while(s < 9999)
+      s++;
+
+      for(t=0;t<numOfRounds;t++)
+	{	//mutex lock
+		neighborIndex = fmod((threadId + pow(2,t)),numberOfThreads);
+		pthread_mutex_lock(&lock);
+		Thread* neighborThread = *(threadList + neighborIndex);
+		neighborThread->receivingCount = neighborThread->receivingCount + 1;
+		pthread_mutex_unlock(&lock);
+		//Thread* curr
+		while((*(threadList+threadId))->receivingCount < t+1);
+	}
+
+} 
 
 /**
  *@brief Centralized Processor Barrier Logic
@@ -124,10 +151,9 @@ void centralizedProcessorBarrierLogic(Process **process, int* countOfProcesses, 
       fclose(fp);	 */
   }
     //  fp = fopen("test.log", "a+");
-      //printf("\nTotal time spent by Processor %d at barrier %d is %lf",(*process)->rank, barrierID, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
+      printf("\nTotal time spent by Processor %d at barrier %d is %lf",(*process)->rank, barrierID, (double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));
      // fclose(fp);
 
-   totalTime += ((double)(endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec));  	
 
 }
 
@@ -179,7 +205,6 @@ void centralizedMPI(int argc, char* argv[], int numberOfBarriers)
 
     }
   
-  printf("\nAverage Time: %lf", (float)totalTime/numberOfBarriers); 
   //Finalize MPI  
   MPI_Finalize(); 
   
@@ -190,21 +215,14 @@ void centralizedMPI(int argc, char* argv[], int numberOfBarriers)
 */ 
 int main(int argc, char *argv[])
 {
+   int numberOfBarriers = NUMBER_OF_BARRIERS;
 
-	if(argc < 2)
-	{
-         	printf("\nSyntax: %s numberOfBarriers", argv[0]);
-		exit(1);
-	}
-    
-     int   numberOfBarriers = atoi(argv[1]);
-    
-       //Incase Number of Barriers is taken as user input
-       if(numberOfBarriers <= 0)
-       {   
-          //printf("\nERROR: Number of barriers cannot be negative!");
-         exit(1);
-       }
+   //Incase Number of Barriers is taken as user input
+    if(numberOfBarriers <= 0)
+    {
+        //printf("\nERROR: Number of barriers cannot be negative!");
+        exit(1);
+    }
    
  centralizedMPI(argc, argv, numberOfBarriers);
  return 0;

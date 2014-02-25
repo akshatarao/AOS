@@ -12,13 +12,17 @@
 #include<centralized_omp.h>
 
 /**
- *@brief Centralized Barrier Logic
+ *@brief Centralized Thread Barrier Logic
  *@param thread - Thread structure
  *@param countOfThreads - Global Count of Threads
  *@param globalSense - Global Sense Variable
  *@returns none
  */
-void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense)
+
+int globalThreadSense = 0;
+int threadsCompleted = 0;
+
+void centralizedThreadBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense)
 {
   int i = 0;
 
@@ -42,11 +46,13 @@ void centralizedBarrierLogic(Thread **thread, int* countOfThreads, int* globalSe
         *globalSense = (*thread)->sense;
     }
   }
-
+  
+  i = 0;
+  
   while((*thread)->sense != *globalSense)
   {
     i++;
-      //printf("\nThread %d is still spinning on thread Sense %d", (*thread)->sense, (*thread)->sense);
+     // printf("\nThread %d is still spinning on thread Sense %d", (*thread)->sense, (*thread)->sense);
   }
       ;
 
@@ -70,16 +76,16 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
   omp_set_num_threads(numberOfThreads);
 
-  globalSense = 1;
+  globalThreadSense = 1;
 
   //Thread Logic begins here
-  #pragma omp parallel shared(globalSense, numberOfThreads)
+  #pragma omp parallel shared(globalThreadSense, numberOfThreads)
   {
 
-      double startTime, endTime, totalTime;	
+     struct timeval startTime, endTime;
+     double totalTime;	
       //Update numberOfThreads to the correct value
       numberOfThreads = omp_get_num_threads(); 
-      threadCounter = numberOfThreads;
 
       Thread* thread;
       thread = (Thread*)malloc(sizeof(Thread));
@@ -91,7 +97,8 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
       for(i = 0; i <numberOfBarriers; i++)
       {
-          //Busy Wait
+        threadCounter = numberOfThreads;  
+	//Busy Wait
           j = 0;
           while(j < 9999)
           {
@@ -100,10 +107,11 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
         
           printf("\nEntered thread %d  of %d threads at barrier %d", threadID, numberOfThreads, i);
 
-	  startTime = omp_get_wtime();		
-          centralizedBarrierLogic(&thread, &threadCounter, &globalSense);
-	  endTime = omp_get_wtime();
-	  totalTime = endTime-startTime; 	
+	  gettimeofday(&startTime, NULL);		
+          centralizedThreadBarrierLogic(&thread, &threadCounter, &globalThreadSense);
+	  gettimeofday(&endTime, NULL);
+
+	  totalTime = (endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec); 	
 	
 	  printf("\nTotal time at barrier %d by thread %d is %f", i, threadID, totalTime);	
 	  #pragma omp critical 
@@ -118,7 +126,7 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
               j++;
           }
 
-          printf("\nCompleted thread %d of %d threads at barrier %d", threadID, numberOfThreads, i, thread->sense, globalSense);
+          printf("\nCompleted thread %d of %d threads at barrier %d %d", threadID, numberOfThreads, i, thread->sense, globalThreadSense);
 
       }   
   
@@ -134,20 +142,28 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
   printf("\nAverage time taken at Barriers is %f\n", (float)totalBarrierTime/numberOfBarriers); 	
 }
 
-
 /**
- *@brief Main Function
- *@param argc - Argument Count  
- *@param argv - Argument Values
+ *@brief - Main Function
+ *@param - argv[1] - Number of Threads
+ *@param - argv[2] - Number of Barriers
+ *@returns none
  */
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
-  printf("\nEnter the number of threads:");
-  scanf("%d", &numberOfThreads);
+    if(argc < 3)
+    {
+        printf("\nSyntax: <executable> numberOfThreads numberOfBarriers");
+        exit(1);
+    }
 
-  printf("\nEnter the number of barriers:");
-  scanf("%d", &numberOfBarriers);
+    int numberOfThreads = atoi(argv[1]);
+    int numberOfBarriers = atoi(argv[2]);
 
-  centralizedOMP(numberOfThreads, numberOfBarriers);
-  return 0;
+    if(numberOfThreads <= 0 || numberOfBarriers <= 0)
+    {
+        printf("\nInvalid Inputs!");
+        exit(1);
+    }
+
+    centralizedOMP(numberOfThreads,numberOfBarriers);
 }
