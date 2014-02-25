@@ -4,9 +4,6 @@
 #include<stdlib.h>
 #include<omp.h>
 #include <sys/time.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <unistd.h>
 #define WINNER 0
 #define LOSER 1
 #define BYE 2
