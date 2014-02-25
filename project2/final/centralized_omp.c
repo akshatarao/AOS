@@ -20,7 +20,6 @@
  */
 
 int globalThreadSense = 0;
-int threadsCompleted = 0;
 
 void centralizedThreadBarrierLogic(Thread **thread, int* countOfThreads, int* globalSense)
 {
@@ -51,10 +50,8 @@ void centralizedThreadBarrierLogic(Thread **thread, int* countOfThreads, int* gl
   
   while((*thread)->sense != *globalSense)
   {
-    i++;
-     // printf("\nThread %d is still spinning on thread Sense %d", (*thread)->sense, (*thread)->sense);
+	i++;
   }
-      ;
 
 } 
 
@@ -69,7 +66,7 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
   int i = 0;
 
-  for(i = 0; i < 10; i++)
+  for(i = 0; i < numberOfBarriers; i++)
   {
        barrierTimeCounter[i] = 0.0;
   } 
@@ -78,10 +75,15 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
   globalThreadSense = 1;
 
-  //Thread Logic begins here
-  #pragma omp parallel shared(globalThreadSense, numberOfThreads)
+  for(i = 0; i < numberOfBarriers; i++)
   {
 
+  	 threadCounter = numberOfThreads;
+ 
+	   //Thread Logic begins here
+	   #pragma omp parallel shared(globalThreadSense, numberOfThreads)
+   	   {
+	
      struct timeval startTime, endTime;
      double totalTime;	
       //Update numberOfThreads to the correct value
@@ -95,25 +97,23 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
 
       threadID = omp_get_thread_num();
 
-      for(i = 0; i <numberOfBarriers; i++)
-      {
-        threadCounter = numberOfThreads;  
 	//Busy Wait
           j = 0;
           while(j < 9999)
           {
               j++;
           }
-        
+         
           printf("\nEntered thread %d  of %d threads at barrier %d", threadID, numberOfThreads, i);
-
+	
 	  gettimeofday(&startTime, NULL);		
           centralizedThreadBarrierLogic(&thread, &threadCounter, &globalThreadSense);
 	  gettimeofday(&endTime, NULL);
 
 	  totalTime = (endTime.tv_sec * 1000000 + endTime.tv_usec)- (startTime.tv_sec * 1000000 + startTime.tv_usec); 	
+
+	  printf("\nTotal time at barrier %d by thread %d is %f", i, threadID, totalTime);
 	
-	  printf("\nTotal time at barrier %d by thread %d is %f", i, threadID, totalTime);	
 	  #pragma omp critical 
 	  {
 		barrierTimeCounter[i] += (float)totalTime;
@@ -126,20 +126,22 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
               j++;
           }
 
-          printf("\nCompleted thread %d of %d threads at barrier %d %d", threadID, numberOfThreads, i, thread->sense, globalThreadSense);
-
-      }   
-  
+          printf("\nCompleted thread %d of %d threads at barrier %d %d", threadID, numberOfThreads, i, thread->sense, globalThreadSense);  
+ 	 }
   }
 
   float totalBarrierTime = 0.0;
   for(i = 0; i < numberOfBarriers; i++)
   {
- 	printf("\nTime taken at Barrier %d is %f", i, barrierTimeCounter[i]);
+       /* fp = fopen("omp.log", "a+");
+ 	fprintf(fp, "\nTime taken at Barrier %d is %f", i, barrierTimeCounter[i]);
+        fclose(fp);
+  */
         totalBarrierTime += barrierTimeCounter[i];
   }
 
   printf("\nAverage time taken at Barriers is %f\n", (float)totalBarrierTime/numberOfBarriers); 	
+
 }
 
 /**
@@ -156,6 +158,7 @@ int main(int argc, char* argv[])
         exit(1);
     }
 
+     	
     int numberOfThreads = atoi(argv[1]);
     int numberOfBarriers = atoi(argv[2]);
 
