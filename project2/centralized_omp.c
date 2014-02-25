@@ -113,7 +113,7 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
               j++;
           }
 
-          printf("\nCompleted thread %d of %d threads at barrier %d", threadID, numberOfThreads, i, thread->sense, globalSense);
+          printf("\nCompleted thread %d of %d threads at barrier %d %d", threadID, numberOfThreads, i, thread->sense, globalSense);
 
       }   
   
@@ -125,7 +125,28 @@ void centralizedOMP(int numberOfThreads, int numberOfBarriers)
   printf("\nTotal barrier time: %f", averageBarrierTime);
 }
 
-int main()
+/**
+ *@brief - Main Function
+ *@param - argv[1] - Number of Threads
+ *@param - argv[2] - Number of Barriers
+ *@returns none
+ */
+int main(int argc, char* argv[])
 {
-    centralizedOMP(3,2);
+    if(argc < 3)
+    {
+        printf("\nSyntax: <executable> numberOfThreads numberOfBarriers");
+        exit(1);
+    }
+
+    int numberOfThreads = atoi(argv[1]);
+    int numberOfBarriers = atoi(argv[2]);
+
+    if(numberOfThreads <= 0 || numberOfBarriers <= 0)
+    {
+        printf("\nInvalid Inputs!");
+        exit(1);
+    }
+
+    centralizedOMP(numberOfThreads,numberOfBarriers);
 }
