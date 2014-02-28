@@ -5,8 +5,8 @@
 #include<pthread.h>
 
 
-int numberOfThreads;
-int numberOfBarriers;
+int numberOfThreads = 2;
+int numberOfBarriers = 100;
 pthread_mutex_t lock;
 
 typedef struct thread_struct
@@ -53,11 +53,11 @@ int main(int argc, char** argv)
 
     double startTime,endTime;
 
-    printf("\nEnter the number of threads: ");
-    scanf("%d", &numberOfThreads);
+//    printf("\nEnter the number of threads: ");
+//    scanf("%d", &numberOfThreads);
 
-    printf("Enter the number of barriers: ");
-    scanf("%d", &numberOfBarriers);
+//    printf("Enter the number of barriers: ");
+//    scanf("%d", &numberOfBarriers);
 
     if(numberOfThreads <=0 || numberOfBarriers <= 0) {
       printf("\nERROR: Number of threads/barriers cannot be negative!");
