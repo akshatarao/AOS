@@ -1,0 +1,99 @@
+\hypertarget{dissemination__omp_8c}{\section{dissemination\-\_\-omp.\-c \-File \-Reference}
+\label{dissemination__omp_8c}\index{dissemination\-\_\-omp.\-c@{dissemination\-\_\-omp.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$omp.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$math.\-h$>$}\*
+{\ttfamily \#include $<$pthread.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structthread__struct}{thread\-\_\-struct}
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structthread__struct}{thread\-\_\-struct} \hyperlink{dissemination__omp_8c_a2363ceb87b89a2a7619b8c564c4d6165}{\-Thread}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{dissemination__omp_8c_a9956822d604958a888653bc9198b119e}{get\-Elapsed\-Time} (struct timeval $\ast$start\-\_\-t, struct timeval $\ast$finish\-\_\-t)
+\begin{DoxyCompactList}\small\item\em getting elapsed time between entry and exit of thread at barrier \end{DoxyCompactList}\item 
+void \hyperlink{dissemination__omp_8c_a488075ae0ad4306457d283616a54b952}{dissemination\-Barrier} (\hyperlink{centDiss_8c_a2363ceb87b89a2a7619b8c564c4d6165}{\-Thread} $\ast$thread, \hyperlink{centDiss_8c_a2363ceb87b89a2a7619b8c564c4d6165}{\-Thread} $\ast$$\ast$thread\-List, int thread\-Id)
+\begin{DoxyCompactList}\small\item\em dissemination barrier logic \end{DoxyCompactList}\item 
+\hypertarget{dissemination__omp_8c_a3c04138a5bfe5d72780bb7e82a18e627}{int \hyperlink{dissemination__omp_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)}\label{dissemination__omp_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+\begin{DoxyCompactList}\small\item\em \-Main \-Function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{dissemination__omp_8c_a4c424ffe8d422feafac4036f5bfe3ea4}{int {\bfseries number\-Of\-Threads} = 8}\label{dissemination__omp_8c_a4c424ffe8d422feafac4036f5bfe3ea4}
+
+\item 
+\hypertarget{dissemination__omp_8c_a6f311050b32936b195455efba813aab9}{int {\bfseries number\-Of\-Barriers} = 100000}\label{dissemination__omp_8c_a6f311050b32936b195455efba813aab9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Spoorthi \-Ravi 
+\end{DoxyAuthor}
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{dissemination__omp_8c_a2363ceb87b89a2a7619b8c564c4d6165}{\index{dissemination\-\_\-omp.\-c@{dissemination\-\_\-omp.\-c}!\-Thread@{\-Thread}}
+\index{\-Thread@{\-Thread}!dissemination_omp.c@{dissemination\-\_\-omp.\-c}}
+\subsubsection[{\-Thread}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf thread\-\_\-struct} {\bf \-Thread}}}\label{dissemination__omp_8c_a2363ceb87b89a2a7619b8c564c4d6165}
+\-Thread \-Structure 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{dissemination__omp_8c_a488075ae0ad4306457d283616a54b952}{\index{dissemination\-\_\-omp.\-c@{dissemination\-\_\-omp.\-c}!dissemination\-Barrier@{dissemination\-Barrier}}
+\index{dissemination\-Barrier@{dissemination\-Barrier}!dissemination_omp.c@{dissemination\-\_\-omp.\-c}}
+\subsubsection[{dissemination\-Barrier}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dissemination\-Barrier} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Thread} $\ast$}]{thread, }
+\item[{{\bf \-Thread} $\ast$$\ast$}]{thread\-List, }
+\item[{int}]{thread\-Id}
+\end{DoxyParamCaption}
+)}}\label{dissemination__omp_8c_a488075ae0ad4306457d283616a54b952}
+
+
+dissemination barrier logic 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em thread} & -\/ thread structure \\
+\hline
+{\em thread\-List} & -\/ list of threads \\
+\hline
+{\em thread\-Id} & -\/ \-I\-D of thread \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+\hypertarget{dissemination__omp_8c_a9956822d604958a888653bc9198b119e}{\index{dissemination\-\_\-omp.\-c@{dissemination\-\_\-omp.\-c}!get\-Elapsed\-Time@{get\-Elapsed\-Time}}
+\index{get\-Elapsed\-Time@{get\-Elapsed\-Time}!dissemination_omp.c@{dissemination\-\_\-omp.\-c}}
+\subsubsection[{get\-Elapsed\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf get\-Elapsed\-Time} (
+\begin{DoxyParamCaption}
+\item[{struct timeval $\ast$}]{start\-\_\-t, }
+\item[{struct timeval $\ast$}]{finish\-\_\-t}
+\end{DoxyParamCaption}
+)}}\label{dissemination__omp_8c_a9956822d604958a888653bc9198b119e}
+
+
+getting elapsed time between entry and exit of thread at barrier 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em start\-\_\-t} & -\/ entry time of thread \\
+\hline
+{\em finish\-\_\-t} & -\/ exit time of thread \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+elapsed time for the barrier 
+\end{DoxyReturn}

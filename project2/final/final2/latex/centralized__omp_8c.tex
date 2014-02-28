@@ -1,0 +1,106 @@
+\hypertarget{centralized__omp_8c}{\section{centralized\-\_\-omp.\-c \-File \-Reference}
+\label{centralized__omp_8c}\index{centralized\-\_\-omp.\-c@{centralized\-\_\-omp.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$omp.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$centralized\-\_\-omp.\-h$>$}\*
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{centralized__omp_8c_a79b5e3909adde63b5fe2826a725eda5d}{centralized\-Thread\-Barrier\-Logic} (\hyperlink{centDiss_8c_a2363ceb87b89a2a7619b8c564c4d6165}{\-Thread} $\ast$$\ast$thread, int $\ast$count\-Of\-Threads, int $\ast$global\-Sense)
+\begin{DoxyCompactList}\small\item\em \-Centralized \-Thread \-Barrier \-Logic. \end{DoxyCompactList}\item 
+void \hyperlink{centralized__omp_8c_a6ba1b91eff1e1c681fec6a578f211bf6}{centralized\-O\-M\-P} (int number\-Of\-Threads, int number\-Of\-Barriers)
+\begin{DoxyCompactList}\small\item\em \-Centralized \-O\-M\-P. \end{DoxyCompactList}\item 
+int \hyperlink{centralized__omp_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item \-Main \-Function 
+\end{DoxyItemize}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{centralized__omp_8c_a2dfc4f657742430d2d9d80887a23dffb}{int {\bfseries global\-Thread\-Sense} = 0}\label{centralized__omp_8c_a2dfc4f657742430d2d9d80887a23dffb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Akshata \-Rao 
+\end{DoxyAuthor}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{centralized__omp_8c_a6ba1b91eff1e1c681fec6a578f211bf6}{\index{centralized\-\_\-omp.\-c@{centralized\-\_\-omp.\-c}!centralized\-O\-M\-P@{centralized\-O\-M\-P}}
+\index{centralized\-O\-M\-P@{centralized\-O\-M\-P}!centralized_omp.c@{centralized\-\_\-omp.\-c}}
+\subsubsection[{centralized\-O\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf centralized\-O\-M\-P} (
+\begin{DoxyParamCaption}
+\item[{int}]{number\-Of\-Threads, }
+\item[{int}]{number\-Of\-Barriers}
+\end{DoxyParamCaption}
+)}}\label{centralized__omp_8c_a6ba1b91eff1e1c681fec6a578f211bf6}
+
+
+\-Centralized \-O\-M\-P. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em number\-Of\-Threads} & -\/ \-Number of \-Threads \\
+\hline
+{\em number\-Of\-Barriers} & -\/ \-Number of \-Barriers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+\hypertarget{centralized__omp_8c_a79b5e3909adde63b5fe2826a725eda5d}{\index{centralized\-\_\-omp.\-c@{centralized\-\_\-omp.\-c}!centralized\-Thread\-Barrier\-Logic@{centralized\-Thread\-Barrier\-Logic}}
+\index{centralized\-Thread\-Barrier\-Logic@{centralized\-Thread\-Barrier\-Logic}!centralized_omp.c@{centralized\-\_\-omp.\-c}}
+\subsubsection[{centralized\-Thread\-Barrier\-Logic}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf centralized\-Thread\-Barrier\-Logic} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Thread} $\ast$$\ast$}]{thread, }
+\item[{int $\ast$}]{count\-Of\-Threads, }
+\item[{int $\ast$}]{global\-Sense}
+\end{DoxyParamCaption}
+)}}\label{centralized__omp_8c_a79b5e3909adde63b5fe2826a725eda5d}
+
+
+\-Centralized \-Thread \-Barrier \-Logic. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em thread} & -\/ \-Thread structure \\
+\hline
+{\em count\-Of\-Threads} & -\/ \-Global \-Count of \-Threads \\
+\hline
+{\em global\-Sense} & -\/ \-Global \-Sense \-Variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+\hypertarget{centralized__omp_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{centralized\-\_\-omp.\-c@{centralized\-\_\-omp.\-c}!main@{main}}
+\index{main@{main}!centralized_omp.c@{centralized\-\_\-omp.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf main} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{centralized__omp_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyItemize}
+\item \-Main \-Function 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em -\/} & argv\mbox{[}1\mbox{]} -\/ \-Number of \-Threads \\
+\hline
+{\em -\/} & argv\mbox{[}2\mbox{]} -\/ \-Number of \-Barriers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}

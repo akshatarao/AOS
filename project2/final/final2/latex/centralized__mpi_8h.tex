@@ -1,0 +1,109 @@
+\hypertarget{centralized__mpi_8h}{\section{centralized\-\_\-mpi.\-h \-File \-Reference}
+\label{centralized__mpi_8h}\index{centralized\-\_\-mpi.\-h@{centralized\-\_\-mpi.\-h}}
+}
+{\ttfamily \#include $<$mpi.\-h$>$}\*
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structprocess__struct}{process\-\_\-struct}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{centralized__mpi_8h_af7a26959581789c91dfd0e6802021400}{\#define {\bfseries \-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-B\-A\-R\-R\-I\-E\-R\-S}~1}\label{centralized__mpi_8h_af7a26959581789c91dfd0e6802021400}
+
+\item 
+\hypertarget{centralized__mpi_8h_a4631e543686670df6cc388e47f4e690a}{\#define {\bfseries \-S\-E\-N\-S\-E\-\_\-0}~5}\label{centralized__mpi_8h_a4631e543686670df6cc388e47f4e690a}
+
+\item 
+\hypertarget{centralized__mpi_8h_a0f3199935685cb5b0e2cfc17cada8882}{\#define {\bfseries \-S\-E\-N\-S\-E\-\_\-1}~10}\label{centralized__mpi_8h_a0f3199935685cb5b0e2cfc17cada8882}
+
+\item 
+\hypertarget{centralized__mpi_8h_a22c88fdadb7d8f8417a92cdcc6232786}{\#define {\bfseries \-C\-O\-M\-P\-L\-E\-T\-E\-D}~1}\label{centralized__mpi_8h_a22c88fdadb7d8f8417a92cdcc6232786}
+
+\item 
+\hypertarget{centralized__mpi_8h_a88455d15c9c116f49725e13d90d5c2f0}{\#define {\bfseries \-N\-O\-T\-\_\-\-C\-O\-M\-P\-L\-E\-T\-E\-D}~0}\label{centralized__mpi_8h_a88455d15c9c116f49725e13d90d5c2f0}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structprocess__struct}{process\-\_\-struct} \hyperlink{centralized__mpi_8h_aa719dd0c3594e8eb8abb5b8e1c5f9218}{\-Process}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{centralized__mpi_8h_a815d5f69a7f526f7133875068b88cf37}{centralized\-Processor\-Barrier\-Logic} (\hyperlink{centDiss_8c_aa719dd0c3594e8eb8abb5b8e1c5f9218}{\-Process} $\ast$$\ast$process, int $\ast$count\-Of\-Processes, int $\ast$global\-Sense, int barrier\-I\-D)
+\begin{DoxyCompactList}\small\item\em \-Centralized \-Processor \-Barrier \-Logic. \end{DoxyCompactList}\item 
+void \hyperlink{centralized__mpi_8h_a81cf7299e3bb58eed54602a54222e59b}{centralized\-M\-P\-I} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, int number\-Of\-Barriers)
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item \-Centralized \-M\-P\-I function 
+\end{DoxyItemize}\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Akshata \-Rao 
+\end{DoxyAuthor}
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{centralized__mpi_8h_aa719dd0c3594e8eb8abb5b8e1c5f9218}{\index{centralized\-\_\-mpi.\-h@{centralized\-\_\-mpi.\-h}!\-Process@{\-Process}}
+\index{\-Process@{\-Process}!centralized_mpi.h@{centralized\-\_\-mpi.\-h}}
+\subsubsection[{\-Process}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf process\-\_\-struct} {\bf \-Process}}}\label{centralized__mpi_8h_aa719dd0c3594e8eb8abb5b8e1c5f9218}
+\-Process \-Structure 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{centralized__mpi_8h_a81cf7299e3bb58eed54602a54222e59b}{\index{centralized\-\_\-mpi.\-h@{centralized\-\_\-mpi.\-h}!centralized\-M\-P\-I@{centralized\-M\-P\-I}}
+\index{centralized\-M\-P\-I@{centralized\-M\-P\-I}!centralized_mpi.h@{centralized\-\_\-mpi.\-h}}
+\subsubsection[{centralized\-M\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf centralized\-M\-P\-I} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{number\-Of\-Barriers}
+\end{DoxyParamCaption}
+)}}\label{centralized__mpi_8h_a81cf7299e3bb58eed54602a54222e59b}
+
+
+
+\begin{DoxyItemize}
+\item \-Centralized \-M\-P\-I function 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em -\/} & number\-Of\-Barriers -\/ \-Number of \-Barriers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+-\/ \-None 
+\end{DoxyReturn}
+\hypertarget{centralized__mpi_8h_a815d5f69a7f526f7133875068b88cf37}{\index{centralized\-\_\-mpi.\-h@{centralized\-\_\-mpi.\-h}!centralized\-Processor\-Barrier\-Logic@{centralized\-Processor\-Barrier\-Logic}}
+\index{centralized\-Processor\-Barrier\-Logic@{centralized\-Processor\-Barrier\-Logic}!centralized_mpi.h@{centralized\-\_\-mpi.\-h}}
+\subsubsection[{centralized\-Processor\-Barrier\-Logic}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf centralized\-Processor\-Barrier\-Logic} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Process} $\ast$$\ast$}]{process, }
+\item[{int $\ast$}]{count\-Of\-Processes, }
+\item[{int $\ast$}]{global\-Sense, }
+\item[{int}]{barrier\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{centralized__mpi_8h_a815d5f69a7f526f7133875068b88cf37}
+
+
+\-Centralized \-Processor \-Barrier \-Logic. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em process} & -\/ \-Process structure \\
+\hline
+{\em count\-Of\-Processes} & -\/ \-Global \-Count of \-Processes \\
+\hline
+{\em global\-Sense} & -\/ \-Global \-Sense \-Variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}

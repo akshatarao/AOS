@@ -1,0 +1,140 @@
+\hypertarget{tournament__mpi_8c}{\section{tournament\-\_\-mpi.\-c \-File \-Reference}
+\label{tournament__mpi_8c}\index{tournament\-\_\-mpi.\-c@{tournament\-\_\-mpi.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$mpi.\-h$>$}\*
+{\ttfamily \#include $<$math.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include $<$omp.\-h$>$}\*
+{\ttfamily \#include $<$sys/time.\-h$>$}\*
+{\ttfamily \#include $<$stdint.\-h$>$}\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\*
+{\ttfamily \#include $<$unistd.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structprocessor__struct}{processor\-\_\-struct}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{tournament__mpi_8c_a148665c75ac246648923b90119015f88}{\#define {\bfseries \-W\-I\-N\-N\-E\-R}~0}\label{tournament__mpi_8c_a148665c75ac246648923b90119015f88}
+
+\item 
+\hypertarget{tournament__mpi_8c_a5c2993b14a86bf5aeeef890a49077fa6}{\#define {\bfseries \-L\-O\-S\-E\-R}~1}\label{tournament__mpi_8c_a5c2993b14a86bf5aeeef890a49077fa6}
+
+\item 
+\hypertarget{tournament__mpi_8c_a3d91eaf9be1bd362e3779b2667768051}{\#define {\bfseries \-B\-Y\-E}~2}\label{tournament__mpi_8c_a3d91eaf9be1bd362e3779b2667768051}
+
+\item 
+\hypertarget{tournament__mpi_8c_a687b01e78ba17042deec68178bfea54c}{\#define {\bfseries \-C\-H\-A\-M\-P\-I\-O\-N}~3}\label{tournament__mpi_8c_a687b01e78ba17042deec68178bfea54c}
+
+\item 
+\hypertarget{tournament__mpi_8c_ad59a649496ed736e2c98d2d979d00474}{\#define {\bfseries \-D\-R\-O\-P\-O\-U\-T}~4}\label{tournament__mpi_8c_ad59a649496ed736e2c98d2d979d00474}
+
+\item 
+\hypertarget{tournament__mpi_8c_a612122d71eeab5ef460549b943011222}{\#define {\bfseries \-U\-S\-E\-L\-E\-S\-S}~-\/1}\label{tournament__mpi_8c_a612122d71eeab5ef460549b943011222}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{tournament__mpi_8c_ae4518af0dbb21b04d6ade3e910943ddb}{typedef struct \hyperlink{structprocessor__struct}{processor\-\_\-struct} {\bfseries \-Processor}}\label{tournament__mpi_8c_ae4518af0dbb21b04d6ade3e910943ddb}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{tournament__mpi_8c_a9956822d604958a888653bc9198b119e}{get\-Elapsed\-Time} (struct timeval $\ast$start\-\_\-t, struct timeval $\ast$finish\-\_\-t)
+\begin{DoxyCompactList}\small\item\em \-Getting elapsed time between entry and exit of processor at barrier. \end{DoxyCompactList}\item 
+void \hyperlink{tournament__mpi_8c_a901cf22e4e77bcaf9393bf8385bf5fca}{tournament\-Barrier} (\hyperlink{structprocessor__struct}{\-Processor} processor\-List\mbox{[}num\-Of\-Processors\mbox{]}\mbox{[}20\mbox{]}, int num\-Of\-Rounds, int \-P\-I\-D)
+\begin{DoxyCompactList}\small\item\em tournament barrier logic \end{DoxyCompactList}\item 
+\hypertarget{tournament__mpi_8c_a3c04138a5bfe5d72780bb7e82a18e627}{int \hyperlink{tournament__mpi_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)}\label{tournament__mpi_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyItemize}
+\item \-Main \-Function 
+\end{DoxyItemize}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{tournament__mpi_8c_ab932513f17ef9524ed8f51edea944248}{int {\bfseries \-P\-I\-D}}\label{tournament__mpi_8c_ab932513f17ef9524ed8f51edea944248}
+
+\item 
+\hypertarget{tournament__mpi_8c_ae93bd83ccc43505e7859cad496b039f8}{int {\bfseries num\-Of\-Processors}}\label{tournament__mpi_8c_ae93bd83ccc43505e7859cad496b039f8}
+
+\item 
+\hypertarget{tournament__mpi_8c_ab1a90b2e126b165f3aa0b52330688256}{int {\bfseries num\-Of\-Barriers} = 10000}\label{tournament__mpi_8c_ab1a90b2e126b165f3aa0b52330688256}
+
+\item 
+\hypertarget{tournament__mpi_8c_a72d9c10965e767da9e99b6bee0c7f6c5}{struct timeval start\-\_\-t {\bfseries finish\-\_\-t}}\label{tournament__mpi_8c_a72d9c10965e767da9e99b6bee0c7f6c5}
+
+\item 
+\hypertarget{tournament__mpi_8c_a594d3ab930e67c421040d8301bf78328}{unsigned long {\bfseries start}}\label{tournament__mpi_8c_a594d3ab930e67c421040d8301bf78328}
+
+\item 
+\hypertarget{tournament__mpi_8c_aa82b14f39636bea67ce4ce6c7d68517d}{unsigned long {\bfseries finish}}\label{tournament__mpi_8c_aa82b14f39636bea67ce4ce6c7d68517d}
+
+\item 
+\hypertarget{tournament__mpi_8c_a2a8c3617cf678c16b31ce9992f3c46fc}{unsigned long {\bfseries final\-\_\-usec}}\label{tournament__mpi_8c_a2a8c3617cf678c16b31ce9992f3c46fc}
+
+\item 
+\hypertarget{tournament__mpi_8c_a59a410e1f8bc4995f8d17cf9c71cd311}{unsigned long {\bfseries final\-\_\-sec}}\label{tournament__mpi_8c_a59a410e1f8bc4995f8d17cf9c71cd311}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Spoorthi \-Ravi 
+\end{DoxyAuthor}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{tournament__mpi_8c_a9956822d604958a888653bc9198b119e}{\index{tournament\-\_\-mpi.\-c@{tournament\-\_\-mpi.\-c}!get\-Elapsed\-Time@{get\-Elapsed\-Time}}
+\index{get\-Elapsed\-Time@{get\-Elapsed\-Time}!tournament_mpi.c@{tournament\-\_\-mpi.\-c}}
+\subsubsection[{get\-Elapsed\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf get\-Elapsed\-Time} (
+\begin{DoxyParamCaption}
+\item[{struct timeval $\ast$}]{start\-\_\-t, }
+\item[{struct timeval $\ast$}]{finish\-\_\-t}
+\end{DoxyParamCaption}
+)}}\label{tournament__mpi_8c_a9956822d604958a888653bc9198b119e}
+
+
+\-Getting elapsed time between entry and exit of processor at barrier. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em start\-\_\-t} & -\/ entry time of processor \\
+\hline
+{\em finish\-\_\-t} & -\/ exit time of processor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+double 
+\end{DoxyReturn}
+\hypertarget{tournament__mpi_8c_a901cf22e4e77bcaf9393bf8385bf5fca}{\index{tournament\-\_\-mpi.\-c@{tournament\-\_\-mpi.\-c}!tournament\-Barrier@{tournament\-Barrier}}
+\index{tournament\-Barrier@{tournament\-Barrier}!tournament_mpi.c@{tournament\-\_\-mpi.\-c}}
+\subsubsection[{tournament\-Barrier}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf tournament\-Barrier} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Processor}}]{processor\-List\mbox{[}num\-Of\-Processors\mbox{]}\mbox{[}20\mbox{]}, }
+\item[{int}]{num\-Of\-Rounds, }
+\item[{int}]{\-P\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{tournament__mpi_8c_a901cf22e4e77bcaf9393bf8385bf5fca}
+
+
+tournament barrier logic 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em processsor\-List} & -\/ matrix containing roles of each processor at different rounds \\
+\hline
+{\em num\-Of\-Rounds} & -\/ number of \-Rounds that a processsor needs to complete \\
+\hline
+{\em \-P\-I\-D} & -\/ processor rank \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+double 
+\end{DoxyReturn}
