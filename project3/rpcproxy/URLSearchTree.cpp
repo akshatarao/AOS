@@ -2,22 +2,39 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<URLSearchTree.h>
+/**
+*@author Akshata Rao
+*/
 
+/**
+ *@file centralized_mpi.c
+ */
+
+/**
+*@brief Structure of URL Node
+*/
 struct URLNode
 {
-	struct URLNode *left;
-	struct URLNode *right;
+	struct URLNode *left; //left child
+	struct URLNode *right;//right child
 
-	const char* url;
-	const char* content;
+	const char* url; //URL
+	const char* content; //WebContent
 };
-bool search(struct URLNode **root, const char* url, struct URLNode** parent, struct URLNode **x);
 
+/**
+ *@brief Insert URL Node
+ *@param root - Root of the tree
+ *@param url - Web URL
+ *@param content - URL Content
+ *@returns none
+ */
 void insert(struct URLNode **root, const char* url, const char* content)
 {
+	//If empty tree, create the tree
 	if(*root == NULL)
 	{
-		printf("Im here");
 		
 		*root = (struct URLNode *)malloc(sizeof(struct URLNode));
 		(*root)->left = NULL;
@@ -27,6 +44,7 @@ void insert(struct URLNode **root, const char* url, const char* content)
 	}
 	else
 	{
+		//Recursively find the parent of the node to be inserted
 		const char* rootString = (*root)->url;
 
 		if(strcmp(rootString,url) > 0)
@@ -40,8 +58,14 @@ void insert(struct URLNode **root, const char* url, const char* content)
 	}
 }
 
+/**
+ *@brief Inorder Display
+ *@param node - Pointer to Root of the tree
+ *@returns none
+*/
 void inorder(struct URLNode *node)
 {
+	printf("\n");
 	if(node != NULL)
 	{
 		inorder(node->left);
@@ -50,6 +74,12 @@ void inorder(struct URLNode *node)
 	}
 } 
 
+/**
+ *@brief Retrieve the Content for the URL
+ *@param node - Root of the BST
+ *@param url - URL
+ *@returns none
+*/
 const char* retrieveContent(struct URLNode *node, const char* url)
 {
 	struct URLNode *root;
@@ -59,17 +89,19 @@ const char* retrieveContent(struct URLNode *node, const char* url)
 
 	while(root != NULL)
 	{
+		//If URL matches Return content
 		if(strcmp(root->url, url) == 0)
 		{
 			content = root->content;
 			return content;
 		}
 
+		//Root URL is greater than the searched URL
 		if(strcmp(root->url, url) > 0)
 		{
 			root = root->left;
 		}
-		else
+		else//Root URL is lesser than the searched URL
 		{
 			root = root->right;
 		}
@@ -77,6 +109,12 @@ const char* retrieveContent(struct URLNode *node, const char* url)
 
 }
 
+/**
+ *@brief Delete a URL Node
+ *@param root - Root of the BST
+ *@param url - URL whose webcontent must be deleted
+ *@returns none
+**/
 void deleteURLNode(struct URLNode **root, const char* url)
 {
 	bool found = false;
@@ -93,8 +131,6 @@ void deleteURLNode(struct URLNode **root, const char* url)
 
 	found = search(root, url, &parent, &x);
 
-	printf("\nFOund: %d", found);
-		
 	if(found == false)
 	{
 		printf("\nURL was not found in tree");
@@ -102,9 +138,47 @@ void deleteURLNode(struct URLNode **root, const char* url)
 	}
 	else
 	{
+		//If the Root Node is the node to be deleted
+		if(parent == NULL)
+		{
+			//Has 2 children, Adjust left children to the right subtree
+			if(x->right != NULL && x->left != NULL)
+			{
+				struct URLNode* current = x->right;
+
+				while(current->left != NULL)
+				{
+					current = current->left;
+				}
+				
+				current->left = x->left;
+				*root = x->right;
+			}
+			
+			//Has Left Child, Reassign root to left child
+			if(x->right == NULL && x->left != NULL)
+			{
+				*root = x->left;
+			}
+
+			//Has Right Child, reassign root to right child
+			if(x->right != NULL && x->left == NULL)
+			{
+				*root = x->right;
+			}
+
+			//Has No Children, mark as NULL
+			if(x->left == NULL && x->right == NULL)
+			{
+				*root = NULL;
+			}
+			
+			//free(x);
+			return;
+		}
+	
 		if(x->left != NULL && x->right != NULL)
 		{
-			printf("Both Children");
 			parent = x;
 			successor = x->right;
 			
@@ -121,7 +195,6 @@ void deleteURLNode(struct URLNode **root, const char* url)
 
 		if(x->left == NULL && x->right == NULL)
 		{
-			printf("No Children");
 			if(parent->right == x)
 				parent->right = NULL;
 			else
@@ -132,7 +205,6 @@ void deleteURLNode(struct URLNode **root, const char* url)
 
 		if(x->left == NULL && x->right != NULL)
 		{
-			printf("\nRight Child");
 			if(parent->left == x)
 				parent->left = x->right;
 			else
@@ -142,7 +214,6 @@ void deleteURLNode(struct URLNode **root, const char* url)
 
 		if(x->left != NULL && x->right == NULL)
 		{
-			printf("\nLeft Child");
 			if(parent->left == x)
 				parent->left = x->left;
 			else
@@ -154,6 +225,13 @@ void deleteURLNode(struct URLNode **root, const char* url)
 		
 }
 
+/**
+ *@brief - Search for the Parent node and the node to be deleted
+ *@param - root - Root Node
+ *@param - url - URL to be searched
+ *@param - x - Pointer to the current node
+ *@returns Found
+*/
 bool search(struct URLNode **root, const char* url, struct URLNode** parent, struct URLNode **x)
 {
 	struct URLNode *current;
@@ -184,7 +262,10 @@ bool search(struct URLNode **root, const char* url, struct URLNode** parent, str
 	}	
 	
 } 
-int main()
+
+//Change to int main() if running solo
+//int main()
+void testCode()
 {
 	struct URLNode *node;
 	
@@ -199,11 +280,13 @@ int main()
 
 	inorder(node);
 	const char* output = retrieveContent(node, trial);
-	printf("\nOutput: %s ", output);
+	printf("\nRetrieved Content: %s ", output);
 
 	const char* trial2 = "trial";
-	deleteURLNode(&node, trial);
+	deleteURLNode(&node, trial2);
 
+	inorder(node);
 }
 
-
+//TODO: Add Comments
+//TODO: Free Memory after deletion
