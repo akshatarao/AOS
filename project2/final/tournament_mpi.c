@@ -8,10 +8,9 @@
 
 
 #include<stdio.h>
-#include<mpi.h>
+#include"mpi.h"
 #include <math.h>
 #include<stdlib.h>
-#include<omp.h>
 #include <sys/time.h>
 #include <stdint.h>
 #include <stdbool.h>
