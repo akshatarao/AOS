@@ -7,7 +7,8 @@ GEN_SRC = gen-cpp/RPCProxy_constants.cpp gen-cpp/RPCProxy.cpp gen-cpp/RPCProxy_t
 default: server client
 
 server: RPCProxyServer.cpp
-	g++ -o RPCProxyServer -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp RPCProxyServer.cpp ${GEN_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS}
+	g++ -o RPCProxyServer -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp RPCProxyServer.cpp ${GEN_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS} -lcurl -L/usr/lib/x86_64-linux-gnu 
+
 
 client: RPCProxyClient.cpp
 	g++ -o RPCProxyClient -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp RPCProxyClient.cpp ${GEN_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS}

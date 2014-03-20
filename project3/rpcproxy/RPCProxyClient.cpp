@@ -30,10 +30,12 @@ int main(int argc, char** argv) {
     client.hello();
 
     string content;
-    const char* url = "abc";
-	 
-    client.fetchURLContent(content, url);	
+    const char* url = argv[1];
 
+    printf("URL Input: %s", argv[1] );	 
+    client.fetchURLContent(content, url);	
+    cout << "URL Output: "<< content;
+	
      transport->close();
   } catch (TException &tx) {
     printf("ERROR: %s\n", tx.what());
