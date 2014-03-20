@@ -29,6 +29,11 @@ int main(int argc, char** argv) {
 
     client.hello();
 
+    string content;
+    const char* url = "abc";
+	 
+    client.fetchURLContent(content, url);	
+
      transport->close();
   } catch (TException &tx) {
     printf("ERROR: %s\n", tx.what());

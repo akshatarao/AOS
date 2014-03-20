@@ -16,6 +16,7 @@ class RPCProxyIf {
  public:
   virtual ~RPCProxyIf() {}
   virtual void hello() = 0;
+  virtual void fetchURLContent(std::string& _return, const std::string& url) = 0;
 };
 
 class RPCProxyIfFactory {
@@ -46,6 +47,9 @@ class RPCProxyNull : virtual public RPCProxyIf {
  public:
   virtual ~RPCProxyNull() {}
   void hello() {
+    return;
+  }
+  void fetchURLContent(std::string& /* _return */, const std::string& /* url */) {
     return;
   }
 };
@@ -136,6 +140,126 @@ class RPCProxy_hello_presult {
 
 };
 
+typedef struct _RPCProxy_fetchURLContent_args__isset {
+  _RPCProxy_fetchURLContent_args__isset() : url(false) {}
+  bool url;
+} _RPCProxy_fetchURLContent_args__isset;
+
+class RPCProxy_fetchURLContent_args {
+ public:
+
+  static const char* ascii_fingerprint; // = "EFB929595D312AC8F305D5A794CFEDA1";
+  static const uint8_t binary_fingerprint[16]; // = {0xEF,0xB9,0x29,0x59,0x5D,0x31,0x2A,0xC8,0xF3,0x05,0xD5,0xA7,0x94,0xCF,0xED,0xA1};
+
+  RPCProxy_fetchURLContent_args() : url() {
+  }
+
+  virtual ~RPCProxy_fetchURLContent_args() throw() {}
+
+  std::string url;
+
+  _RPCProxy_fetchURLContent_args__isset __isset;
+
+  void __set_url(const std::string& val) {
+    url = val;
+  }
+
+  bool operator == (const RPCProxy_fetchURLContent_args & rhs) const
+  {
+    if (!(url == rhs.url))
+      return false;
+    return true;
+  }
+  bool operator != (const RPCProxy_fetchURLContent_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RPCProxy_fetchURLContent_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class RPCProxy_fetchURLContent_pargs {
+ public:
+
+  static const char* ascii_fingerprint; // = "EFB929595D312AC8F305D5A794CFEDA1";
+  static const uint8_t binary_fingerprint[16]; // = {0xEF,0xB9,0x29,0x59,0x5D,0x31,0x2A,0xC8,0xF3,0x05,0xD5,0xA7,0x94,0xCF,0xED,0xA1};
+
+
+  virtual ~RPCProxy_fetchURLContent_pargs() throw() {}
+
+  const std::string* url;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _RPCProxy_fetchURLContent_result__isset {
+  _RPCProxy_fetchURLContent_result__isset() : success(false) {}
+  bool success;
+} _RPCProxy_fetchURLContent_result__isset;
+
+class RPCProxy_fetchURLContent_result {
+ public:
+
+  static const char* ascii_fingerprint; // = "9A73381FEFD6B67F432E717102246330";
+  static const uint8_t binary_fingerprint[16]; // = {0x9A,0x73,0x38,0x1F,0xEF,0xD6,0xB6,0x7F,0x43,0x2E,0x71,0x71,0x02,0x24,0x63,0x30};
+
+  RPCProxy_fetchURLContent_result() : success() {
+  }
+
+  virtual ~RPCProxy_fetchURLContent_result() throw() {}
+
+  std::string success;
+
+  _RPCProxy_fetchURLContent_result__isset __isset;
+
+  void __set_success(const std::string& val) {
+    success = val;
+  }
+
+  bool operator == (const RPCProxy_fetchURLContent_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const RPCProxy_fetchURLContent_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RPCProxy_fetchURLContent_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _RPCProxy_fetchURLContent_presult__isset {
+  _RPCProxy_fetchURLContent_presult__isset() : success(false) {}
+  bool success;
+} _RPCProxy_fetchURLContent_presult__isset;
+
+class RPCProxy_fetchURLContent_presult {
+ public:
+
+  static const char* ascii_fingerprint; // = "9A73381FEFD6B67F432E717102246330";
+  static const uint8_t binary_fingerprint[16]; // = {0x9A,0x73,0x38,0x1F,0xEF,0xD6,0xB6,0x7F,0x43,0x2E,0x71,0x71,0x02,0x24,0x63,0x30};
+
+
+  virtual ~RPCProxy_fetchURLContent_presult() throw() {}
+
+  std::string* success;
+
+  _RPCProxy_fetchURLContent_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class RPCProxyClient : virtual public RPCProxyIf {
  public:
   RPCProxyClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -164,6 +288,9 @@ class RPCProxyClient : virtual public RPCProxyIf {
   void hello();
   void send_hello();
   void recv_hello();
+  void fetchURLContent(std::string& _return, const std::string& url);
+  void send_fetchURLContent(const std::string& url);
+  void recv_fetchURLContent(std::string& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -180,10 +307,12 @@ class RPCProxyProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_hello(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_fetchURLContent(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   RPCProxyProcessor(boost::shared_ptr<RPCProxyIf> iface) :
     iface_(iface) {
     processMap_["hello"] = &RPCProxyProcessor::process_hello;
+    processMap_["fetchURLContent"] = &RPCProxyProcessor::process_fetchURLContent;
   }
 
   virtual ~RPCProxyProcessor() {}
@@ -219,6 +348,16 @@ class RPCProxyMultiface : virtual public RPCProxyIf {
       ifaces_[i]->hello();
     }
     ifaces_[i]->hello();
+  }
+
+  void fetchURLContent(std::string& _return, const std::string& url) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->fetchURLContent(_return, url);
+    }
+    ifaces_[i]->fetchURLContent(_return, url);
+    return;
   }
 
 };
