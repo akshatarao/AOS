@@ -1,18 +1,13 @@
-#include<string>
-#include<unordered_map>
-#include<vector>
-#include "AbstractCache.h"
-using namespace std;
+#include "FIFOCache.h"
 
-class FIFOCache : public AbstractCache {
+FIFOCache::FIFOCache() {
 
-	FIFOCache() {
-	}
-	void updateList(string url){
-		return;
-	}
+}
 
-	int pickIndexForNextDeletion(){
-		return 0;
-	}	
-};
+void FIFOCache::updateList(string url){
+	return;
+}
+
+int FIFOCache::pickIndexForNextDeletion(){
+	return 0;
+}	

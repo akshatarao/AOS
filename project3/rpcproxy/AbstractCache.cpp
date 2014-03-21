@@ -15,9 +15,3 @@ void AbstractCache::deleteFromCache(string url){
 	map.erase(url);
 	list.erase(list.begin() + index);
 }
-
-int main(){
-
-
-return 0;
-}

@@ -13,13 +13,13 @@ client: RPCProxyClient.cpp
 	g++ -o RPCProxyClient -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp RPCProxyClient.cpp ${GEN_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS}
 
 cache: AbstractCache.cpp
-	g++ -std=c++0x AbstractCache.cpp AbstractCache.h -o AbstractCache
+	g++ -c -std=c++0x AbstractCache.cpp AbstractCache.h -o AbstractCache
  
 FIFO: FIFOCache.cpp
-	g++ -std=c++0x FIFOCache.cpp AbstractCache.h -o FIFO
+	g++ -c -std=c++0x FIFOCache.cpp FIFOCache.h AbstractCache.h -o FIFO
 
 LRU: LRUCache.cpp
-    g++ -std=c++0x LRUCache.cpp AbstractCache.h -o LRU
+	g++ -c -std=c++0x LRUCache.cpp LRUCache.h AbstractCache.h -o LRU
 
 clean:
 	$(RM) -r RPCProxyClient RPCProxyServer AbstractCache FIFO LRU
