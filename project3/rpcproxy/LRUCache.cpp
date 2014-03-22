@@ -1,21 +1,19 @@
-#include<string>
-#include<unordered_map>
-#include<vector>
-#include<AbstractCache.h>
-using namespace std;
+#include "LRUCache.h"
 
-class LRUCache : public AbstractCache {
+void LRUCache::updateList(string url){
+	int pos = find(list.begin(), list.end(), url) - list.begin();
+	list.erase(list.begin() + pos);
+	list.push_back(url);
+}
 
-	LRUCache() {
-	}
+int LRUCache::pickIndexForNextDeletion(){
+	return 0;
+}
 
-	void updateList(string url){
-		int pos = find(list.begin(), list.end(), url) - list.begin();
-		list.erase(list.begin() + pos);
-		list.push_back(url);
-	}
+LRUCache::~LRUCache(){
 
-	int pickIndexForNextDeletion(){
-		return 0;
-	}	
-};
+}
+
+LRUCache::LRUCache(){
+	cacheSize = 0;
+}	

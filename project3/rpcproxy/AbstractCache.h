@@ -1,17 +1,19 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#define MAX_CACHE_SIZE 20
 using namespace std;
-
 
 class AbstractCache {
 
 public:
-	void insertIntoCache(string url, char* content);
-	void deleteFromCache(string url);
-	char* getFromCache(string url);
+	unsigned long cacheSize;
+	void insertIntoCache(string url, string content);
+	void deleteFromCache();
+	string getFromCache(string url);
     virtual void updateList(string url) = 0;
 	virtual int pickIndexForNextDeletion() = 0;
-    unordered_map<string, char*> map;
+    unordered_map<string, string> map;
     vector<string> list;
+	virtual ~AbstractCache() = 0;
 };
