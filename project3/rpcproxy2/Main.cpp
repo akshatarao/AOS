@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main(){
+int trial(){
 	
 	LMUCache cache;
 	string test = "key1";
@@ -27,5 +27,97 @@ int main(){
 	cout << cache.cacheSize << "\n";
 	cout << cache.list.at(0).url <<"L\n"; 	
 	cout << "poohoo\n";
+	return 0;
+}
+
+
+void testLMUInsertOneElement()
+{
+	LMUCache cache;
+	
+	string key = "one";	
+	string value = "1234567";
+	
+	cache.insertIntoCache(key, value);
+	
+	cout << "\nTest 1";
+	cout << "\nValue at Head: " << cache.list.at(0).url;
+	cout << "\nValue at Key: " << cache.getFromCache(key) ;
+	cout << "\nCache Size " <<cache.cacheSize;
+	cout << "\n-------------------";
+}
+
+void testLMUInsertTwoElements()
+{
+	LMUCache cache;
+
+	cout << "\nTest 2";
+
+	string key1 = "one";
+	string value1="1234";
+
+	cache.insertIntoCache(key1, value1);
+	cout << "\nValue at Head: " << cache.list.at(0).url;
+	cout << "\nValue at Key: " << cache.getFromCache(key1) ;
+	cout << "\nCache Size " <<cache.cacheSize;
+
+	string key2 = "two";
+	string value2="123";
+
+	cache.insertIntoCache(key2, value2);
+	
+	cout << "\nValue at Head: " << cache.list.at(0).url;
+	cout << "\nValue at Key: " << cache.getFromCache(key2) ;
+	cout << "\nCache Size " <<cache.cacheSize;
+	cout << "\n-------------------";
+
+}
+
+void testLMUInsertThreeElements()
+{
+	LMUCache cache;
+
+	cout << "\nTest 2";
+
+	string key1 = "one";
+	string value1="123";
+
+	cache.insertIntoCache(key1, value1);
+	cout << "\nValue at Head: " << cache.list.at(0).url;
+	cout << "\nValue at Key: " << cache.getFromCache(key1) ;
+	cout << "\nCache Size " <<cache.cacheSize;
+
+	string key2 = "two";
+	string value2="12345";
+
+	cache.insertIntoCache(key2, value2);
+	
+	cout << "\nValue at Head: " << cache.list.at(0).url;
+	cout << "\nValue at Key: " << cache.getFromCache(key2) ;
+	cout << "\nCache Size " <<cache.cacheSize;
+
+	string key3 = "three";
+	string value3="123456";
+
+	cache.insertIntoCache(key3, value3);
+	
+	cout << "\nValue at Head: " << cache.list.at(0).url;
+	cout << "\nValue at Key: " << cache.getFromCache(key3) ;
+	cout << "\nCache Size " <<cache.cacheSize;
+
+
+
+	cout << "\n-------------------";
+
+}	
+void testLMU()
+{
+	testLMUInsertOneElement();
+	testLMUInsertTwoElements();
+	testLMUInsertThreeElements();
+}
+int main()
+{
+	testLMU();
 	return 0;
 }

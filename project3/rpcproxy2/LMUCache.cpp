@@ -39,13 +39,15 @@ void LMUCache::insertIntoList(string url, string content)
 {
 	int contentSize = content.capacity();
 
+	cout << "\nInserted Content Size" << content.capacity();
 	int pos = list.size();
 	URLNode urlNode("","");	
 	for(vector<URLNode>::size_type i = 0; i != list.size(); i++)
 	{
 		urlNode = list[i];
 	
-	
+
+		cout << "\nURLNode : " << urlNode.url << "Content Size " << urlNode.contentSize;	
 		if(urlNode.contentSize < contentSize)
 		{
 			pos = i;
@@ -62,9 +64,10 @@ void LMUCache::insertIntoList(string url, string content)
 	}
 	else
 	{
-		pos = pos + 1;
+		cout << "\nChosen Position " << pos;
 		vector<URLNode>::iterator it = list.begin();
-		list.insert(it, pos, newNode);
+		list.insert(it + pos, newNode);
+		
 	}
 }
 
