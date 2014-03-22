@@ -1,4 +1,5 @@
 #include "LRUCache.h"
+#include "FIFOCache.h"
 #include <iostream>
 
 using namespace std;

@@ -3,10 +3,22 @@
 #include <vector>
 #include "AbstractCache.h"
 
+/**
+ *@file FIFOCache.h
+ */
+
+/**
+ *@author Spoorthi Ravi
+ */
+
 using namespace std;
 
-class FIFOCache : public AbstractCache {
-public:
+/**
+ *@brief FIFO Cache
+ */
+class FIFOCache : public AbstractCache 
+{
+  public:
 	~FIFOCache();
 	FIFOCache();
 	void updateList(string url);

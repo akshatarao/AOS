@@ -4,8 +4,18 @@
 #include <algorithm>
 #include "AbstractCache.h"
 
+/**
+ *@author Spoorthi Ravi
+ */
+
+/**
+ *@file LRUCache.h
+ */
 using namespace std;
 
+/**
+ *@brief LRUCache
+ */
 class LRUCache : public AbstractCache {
 public:
 	LRUCache();
