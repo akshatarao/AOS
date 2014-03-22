@@ -1,0 +1,115 @@
+\hypertarget{classLMUCache}{\section{\-L\-M\-U\-Cache \-Class \-Reference}
+\label{classLMUCache}\index{\-L\-M\-U\-Cache@{\-L\-M\-U\-Cache}}
+}
+
+
+\hyperlink{classLMUCache}{\-L\-M\-U\-Cache}.  
+
+
+
+
+{\ttfamily \#include $<$\-L\-M\-U\-Cache.\-h$>$}
+
+\-Inheritance diagram for \-L\-M\-U\-Cache\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLMUCache}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLMUCache_a315045011c84226323bc88f52628d910}{\hyperlink{classLMUCache_a315045011c84226323bc88f52628d910}{\-L\-M\-U\-Cache} ()}\label{classLMUCache_a315045011c84226323bc88f52628d910}
+
+\begin{DoxyCompactList}\small\item\em \-L\-M\-U \-Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classLMUCache_a59889726c35a2f2a6f6b873f94dd2e87}{\hyperlink{classLMUCache_a59889726c35a2f2a6f6b873f94dd2e87}{$\sim$\-L\-M\-U\-Cache} ()}\label{classLMUCache_a59889726c35a2f2a6f6b873f94dd2e87}
+
+\begin{DoxyCompactList}\small\item\em \-L\-M\-U \-Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classLMUCache_a00f0c220918265d669ae49eb71b179a9}{update\-List} (string url)
+\begin{DoxyCompactList}\small\item\em \-Update the \-List. \end{DoxyCompactList}\item 
+int \hyperlink{classLMUCache_abe671d7cb4d2fa3455fca1d4e2d9a8a4}{pick\-Index\-For\-Next\-Deletion} ()
+\begin{DoxyCompactList}\small\item\em \-Select \-Next \-Candidate for \-Eviction. \end{DoxyCompactList}\item 
+void \hyperlink{classLMUCache_aa284a631c7725948fdcfe9715ad4b420}{insert\-Into\-List} (string url, string content)
+\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L to back of the \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{classLMUCache}{\-L\-M\-U\-Cache}. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classLMUCache_aa284a631c7725948fdcfe9715ad4b420}{\index{\-L\-M\-U\-Cache@{\-L\-M\-U\-Cache}!insert\-Into\-List@{insert\-Into\-List}}
+\index{insert\-Into\-List@{insert\-Into\-List}!LMUCache@{\-L\-M\-U\-Cache}}
+\subsubsection[{insert\-Into\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-L\-M\-U\-Cache\-::insert\-Into\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url, }
+\item[{string}]{content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLMUCache_aa284a631c7725948fdcfe9715ad4b420}
+
+
+\-Insert \-U\-R\-L to back of the \-Queue. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & \\
+\hline
+{\em content} & -\/ \-Web \-Content \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+\hypertarget{classLMUCache_abe671d7cb4d2fa3455fca1d4e2d9a8a4}{\index{\-L\-M\-U\-Cache@{\-L\-M\-U\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
+\index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!LMUCache@{\-L\-M\-U\-Cache}}
+\subsubsection[{pick\-Index\-For\-Next\-Deletion}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-L\-M\-U\-Cache\-::pick\-Index\-For\-Next\-Deletion} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLMUCache_abe671d7cb4d2fa3455fca1d4e2d9a8a4}
+
+
+\-Select \-Next \-Candidate for \-Eviction. 
+
+\begin{DoxyReturn}{\-Returns}
+index of next candidate for eviction 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+\hypertarget{classLMUCache_a00f0c220918265d669ae49eb71b179a9}{\index{\-L\-M\-U\-Cache@{\-L\-M\-U\-Cache}!update\-List@{update\-List}}
+\index{update\-List@{update\-List}!LMUCache@{\-L\-M\-U\-Cache}}
+\subsubsection[{update\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-L\-M\-U\-Cache\-::update\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLMUCache_a00f0c220918265d669ae49eb71b179a9}
+
+
+\-Update the \-List. 
+
+\begin{DoxyAuthor}{\-Author}
+\-Akshata \-Rao 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & -\/ \-U\-R\-L \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{LMUCache_8h}{\-L\-M\-U\-Cache.\-h}\item 
+\hyperlink{LMUCache_8cpp}{\-L\-M\-U\-Cache.\-cpp}\end{DoxyCompactItemize}

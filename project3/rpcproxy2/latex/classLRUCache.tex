@@ -28,13 +28,41 @@
 void \hyperlink{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}{update\-List} (string url)
 \begin{DoxyCompactList}\small\item\em \-Update the \-List. \end{DoxyCompactList}\item 
 int \hyperlink{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}{pick\-Index\-For\-Next\-Deletion} ()
-\begin{DoxyCompactList}\small\item\em \-Select \-Next \-Candidate for \-Eviction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Select \-Next \-Candidate for \-Eviction. \end{DoxyCompactList}\item 
+void \hyperlink{classLRUCache_aa767d58be45c61f2e9a1073343465e16}{insert\-Into\-List} (string url, string content)
+\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L to back of the \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
 \hyperlink{classLRUCache}{\-L\-R\-U\-Cache}. 
 
 \subsection{\-Member \-Function \-Documentation}
+\hypertarget{classLRUCache_aa767d58be45c61f2e9a1073343465e16}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!insert\-Into\-List@{insert\-Into\-List}}
+\index{insert\-Into\-List@{insert\-Into\-List}!LRUCache@{\-L\-R\-U\-Cache}}
+\subsubsection[{insert\-Into\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-L\-R\-U\-Cache\-::insert\-Into\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url, }
+\item[{string}]{content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLRUCache_aa767d58be45c61f2e9a1073343465e16}
+
+
+\-Insert \-U\-R\-L to back of the \-Queue. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & \\
+\hline
+{\em content} & -\/ \-Web \-Content \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
 \hypertarget{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
 \index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!LRUCache@{\-L\-R\-U\-Cache}}
 \subsubsection[{pick\-Index\-For\-Next\-Deletion}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-L\-R\-U\-Cache\-::pick\-Index\-For\-Next\-Deletion} (
@@ -84,4 +112,4 @@ none
 \-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 \hyperlink{LRUCache_8h}{\-L\-R\-U\-Cache.\-h}\item 
-\-L\-R\-U\-Cache.\-cpp\end{DoxyCompactItemize}
+\hyperlink{LRUCache_8cpp}{\-L\-R\-U\-Cache.\-cpp}\end{DoxyCompactItemize}

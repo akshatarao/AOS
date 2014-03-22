@@ -1,0 +1,115 @@
+\hypertarget{classRandomCache}{\section{\-Random\-Cache \-Class \-Reference}
+\label{classRandomCache}\index{\-Random\-Cache@{\-Random\-Cache}}
+}
+
+
+\hyperlink{classRandomCache}{\-Random\-Cache}.  
+
+
+
+
+{\ttfamily \#include $<$\-Random\-Cache.\-h$>$}
+
+\-Inheritance diagram for \-Random\-Cache\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRandomCache}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classRandomCache_ac8fc4e9935427c8e05ae6bb01322654d}{\hyperlink{classRandomCache_ac8fc4e9935427c8e05ae6bb01322654d}{$\sim$\-Random\-Cache} ()}\label{classRandomCache_ac8fc4e9935427c8e05ae6bb01322654d}
+
+\begin{DoxyCompactList}\small\item\em \-Random \-Cache \-Destructor. \end{DoxyCompactList}\item 
+\hypertarget{classRandomCache_a1e619bf1789ec07f0ab622f559dbb52a}{\hyperlink{classRandomCache_a1e619bf1789ec07f0ab622f559dbb52a}{\-Random\-Cache} ()}\label{classRandomCache_a1e619bf1789ec07f0ab622f559dbb52a}
+
+\begin{DoxyCompactList}\small\item\em \-Random \-Cache \-Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classRandomCache_a3aae77b7542e80418669d138223cfcc0}{update\-List} (string url)
+\begin{DoxyCompactList}\small\item\em \-Update the \-Queue. \end{DoxyCompactList}\item 
+int \hyperlink{classRandomCache_ad9362f5b0a972495d03beca2c770d10b}{pick\-Index\-For\-Next\-Deletion} ()
+\begin{DoxyCompactList}\small\item\em \-Select next candidate for eviction. \end{DoxyCompactList}\item 
+void \hyperlink{classRandomCache_aac3ac982daf70108b6b179bb0cdb787d}{insert\-Into\-List} (string url, string content)
+\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L to back of the \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{classRandomCache}{\-Random\-Cache}. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classRandomCache_aac3ac982daf70108b6b179bb0cdb787d}{\index{\-Random\-Cache@{\-Random\-Cache}!insert\-Into\-List@{insert\-Into\-List}}
+\index{insert\-Into\-List@{insert\-Into\-List}!RandomCache@{\-Random\-Cache}}
+\subsubsection[{insert\-Into\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Random\-Cache\-::insert\-Into\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url, }
+\item[{string}]{content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classRandomCache_aac3ac982daf70108b6b179bb0cdb787d}
+
+
+\-Insert \-U\-R\-L to back of the \-Queue. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & \\
+\hline
+{\em content} & -\/ \-Web \-Content \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+\hypertarget{classRandomCache_ad9362f5b0a972495d03beca2c770d10b}{\index{\-Random\-Cache@{\-Random\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
+\index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!RandomCache@{\-Random\-Cache}}
+\subsubsection[{pick\-Index\-For\-Next\-Deletion}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Random\-Cache\-::pick\-Index\-For\-Next\-Deletion} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classRandomCache_ad9362f5b0a972495d03beca2c770d10b}
+
+
+\-Select next candidate for eviction. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Index for candidate for eviction 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+\hypertarget{classRandomCache_a3aae77b7542e80418669d138223cfcc0}{\index{\-Random\-Cache@{\-Random\-Cache}!update\-List@{update\-List}}
+\index{update\-List@{update\-List}!RandomCache@{\-Random\-Cache}}
+\subsubsection[{update\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Random\-Cache\-::update\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classRandomCache_a3aae77b7542e80418669d138223cfcc0}
+
+
+\-Update the \-Queue. 
+
+\begin{DoxyAuthor}{\-Author}
+\-Akshata \-Rao 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{\-Parameters}
+{\em \-U\-R\-L} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{RandomCache_8h}{\-Random\-Cache.\-h}\item 
+\-Random\-Cache.\-cpp\end{DoxyCompactItemize}

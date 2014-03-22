@@ -89,23 +89,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00009"></a>00009 <span class="preprocessor"></span>
 <a name="l00010"></a>00010 <span class="keyword">using namespace </span>std;
 <a name="l00011"></a>00011 
-<a name="l00020"></a><a class="code" href="classAbstractCache.html">00020</a> <span class="keyword">class </span><a class="code" href="classAbstractCache.html">AbstractCache</a> {
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">public</span>:
-<a name="l00023"></a>00023         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> cacheSize;
-<a name="l00024"></a>00024         unordered_map&lt;string, string&gt; map;
-<a name="l00025"></a>00025         vector&lt;string&gt; list;
+<a name="l00020"></a><a class="code" href="classURLNode.html">00020</a> <span class="keyword">class </span><a class="code" href="classURLNode.html">URLNode</a>
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022  <span class="keyword">public</span>:
+<a name="l00023"></a>00023         <span class="keywordtype">string</span> url;             
+<a name="l00024"></a>00024         <span class="keywordtype">string</span> content;
+<a name="l00025"></a>00025         <span class="keywordtype">int</span> contentSize;
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027         <span class="keywordtype">void</span> insertIntoCache(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content);
-<a name="l00028"></a>00028         <span class="keywordtype">void</span> deleteFromCache();
-<a name="l00029"></a>00029         <span class="keywordtype">string</span> getFromCache(<span class="keywordtype">string</span> url);
-<a name="l00030"></a>00030         <span class="keyword">virtual</span> <span class="keywordtype">void</span> updateList(<span class="keywordtype">string</span> url) = 0;
-<a name="l00031"></a>00031         <span class="keyword">virtual</span> <span class="keywordtype">int</span> pickIndexForNextDeletion() = 0;
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033         <span class="keyword">virtual</span> ~<a class="code" href="classAbstractCache.html">AbstractCache</a>() = 0;
-<a name="l00034"></a>00034 };
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="preprocessor">#endif</span>
+<a name="l00027"></a>00027         <a class="code" href="classURLNode.html">URLNode</a>(<span class="keywordtype">string</span> urlInput, <span class="keywordtype">string</span> contentInput)
+<a name="l00028"></a>00028         {
+<a name="l00029"></a>00029                 url  = urlInput;
+<a name="l00030"></a>00030                 content = contentInput;
+<a name="l00031"></a>00031                 contentSize = contentInput.capacity();
+<a name="l00032"></a>00032         }
+<a name="l00033"></a>00033 };
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="classAbstractCache.html">00035</a> <span class="keyword">class </span><a class="code" href="classAbstractCache.html">AbstractCache</a> {
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="keyword">public</span>:
+<a name="l00038"></a>00038         
+<a name="l00039"></a>00039         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> maxCacheSize;
+<a name="l00040"></a>00040         <span class="comment">//members</span>
+<a name="l00041"></a>00041         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> cacheSize;
+<a name="l00042"></a>00042         unordered_map&lt;string, string&gt; map;
+<a name="l00043"></a>00043         vector&lt;URLNode&gt; list;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045         <span class="comment">//concrete implementations</span>
+<a name="l00046"></a>00046         <span class="keywordtype">void</span> insertIntoCache(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content);
+<a name="l00047"></a>00047         <span class="keywordtype">void</span> deleteFromCache();
+<a name="l00048"></a>00048         <span class="keywordtype">string</span> getFromCache(<span class="keywordtype">string</span> url);
+<a name="l00049"></a>00049         <span class="keywordtype">void</span> setMaxCacheSize(<span class="keywordtype">long</span> size);
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         <span class="comment">//abstract implementations</span>
+<a name="l00052"></a>00052         <span class="keyword">virtual</span> <span class="keywordtype">void</span> updateList(<span class="keywordtype">string</span> url) = 0;
+<a name="l00053"></a>00053         <span class="keyword">virtual</span> <span class="keywordtype">int</span> pickIndexForNextDeletion() = 0;
+<a name="l00054"></a>00054         <span class="keyword">virtual</span> <span class="keywordtype">void</span> insertIntoList(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content) = 0;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         <span class="keyword">virtual</span> ~<a class="code" href="classAbstractCache.html">AbstractCache</a>() = 0;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058         <a class="code" href="classAbstractCache.html">AbstractCache</a>()
+<a name="l00059"></a>00059         {
+<a name="l00060"></a>00060                 maxCacheSize = MAX_CACHE_SIZE;
+<a name="l00061"></a>00061         }
+<a name="l00062"></a>00062 };
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -124,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 10:31:01 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 22 2014 18:25:51 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -3,7 +3,7 @@
 }
 
 
-\-F\-I\-F\-O \-Cache.  
+\hyperlink{classFIFOCache}{\-F\-I\-F\-O\-Cache}.  
 
 
 
@@ -28,13 +28,41 @@
 void \hyperlink{classFIFOCache_a73b7632a308ed4813d8c7e03cf597d47}{update\-List} (string url)
 \begin{DoxyCompactList}\small\item\em \-Update the \-Queue. \end{DoxyCompactList}\item 
 int \hyperlink{classFIFOCache_a16f6449563e0e83af7069406a14089e9}{pick\-Index\-For\-Next\-Deletion} ()
-\begin{DoxyCompactList}\small\item\em \-Select next candidate entry for eviction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Select next candidate entry for eviction. \end{DoxyCompactList}\item 
+void \hyperlink{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}{insert\-Into\-List} (string url, string content)
+\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L to \-Back of \-F\-I\-F\-O \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
-\-F\-I\-F\-O \-Cache. 
+\hyperlink{classFIFOCache}{\-F\-I\-F\-O\-Cache}. 
 
 \subsection{\-Member \-Function \-Documentation}
+\hypertarget{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!insert\-Into\-List@{insert\-Into\-List}}
+\index{insert\-Into\-List@{insert\-Into\-List}!FIFOCache@{\-F\-I\-F\-O\-Cache}}
+\subsubsection[{insert\-Into\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-F\-I\-F\-O\-Cache\-::insert\-Into\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url, }
+\item[{string}]{content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}
+
+
+\-Insert \-U\-R\-L to \-Back of \-F\-I\-F\-O \-Queue. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & -\/ \-U\-R\-L \\
+\hline
+{\em content} & -\/ \-Web \-Content \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
 \hypertarget{classFIFOCache_a16f6449563e0e83af7069406a14089e9}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
 \index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!FIFOCache@{\-F\-I\-F\-O\-Cache}}
 \subsubsection[{pick\-Index\-For\-Next\-Deletion}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-F\-I\-F\-O\-Cache\-::pick\-Index\-For\-Next\-Deletion} (

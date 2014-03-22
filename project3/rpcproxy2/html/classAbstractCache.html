@@ -90,8 +90,10 @@ Inheritance diagram for AbstractCache:</div>
  <div class="center">
   <img src="classAbstractCache.png" usemap="#AbstractCache_map" alt=""/>
   <map id="AbstractCache_map" name="AbstractCache_map">
-<area href="classFIFOCache.html" title="FIFO Cache." alt="FIFOCache" shape="rect" coords="0,56,96,80"/>
-<area href="classLRUCache.html" title="LRUCache." alt="LRUCache" shape="rect" coords="106,56,202,80"/>
+<area href="classFIFOCache.html" title="FIFOCache." alt="FIFOCache" shape="rect" coords="0,56,96,80"/>
+<area href="classLMUCache.html" title="LMUCache." alt="LMUCache" shape="rect" coords="106,56,202,80"/>
+<area href="classLRUCache.html" title="LRUCache." alt="LRUCache" shape="rect" coords="212,56,308,80"/>
+<area href="classRandomCache.html" title="RandomCache." alt="RandomCache" shape="rect" coords="318,56,414,80"/>
 </map>
  </div></div>
 
@@ -105,18 +107,24 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete Web Content From Cache.  <a href="#a7cba328082bcd2f8a02e52546b9dd244"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a9b49b5835bbe2fa878bac959ebbec925">getFromCache</a> (string url)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Web Content from Cache.  <a href="#a9b49b5835bbe2fa878bac959ebbec925"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b8d729d097b1726cb01fa8d35a25e62"></a><!-- doxytag: member="AbstractCache::setMaxCacheSize" ref="a0b8d729d097b1726cb01fa8d35a25e62" args="(long size)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMaxCacheSize</b> (long size)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67552fbca85ce7dbc7e2c553b1036884"></a><!-- doxytag: member="AbstractCache::updateList" ref="a67552fbca85ce7dbc7e2c553b1036884" args="(string url)=0" -->
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>updateList</b> (string url)=0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9fe168b0b9167c27b94b4a3a1be788c"></a><!-- doxytag: member="AbstractCache::pickIndexForNextDeletion" ref="ae9fe168b0b9167c27b94b4a3a1be788c" args="()=0" -->
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>pickIndexForNextDeletion</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a910756174d1ee21eac16a4be3f7c881a"></a><!-- doxytag: member="AbstractCache::insertIntoList" ref="a910756174d1ee21eac16a4be3f7c881a" args="(string url, string content)=0" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>insertIntoList</b> (string url, string content)=0</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5db4a215715082ca927f75fec6fe274c"></a><!-- doxytag: member="AbstractCache::maxCacheSize" ref="a5db4a215715082ca927f75fec6fe274c" args="" -->
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>maxCacheSize</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b7d8e12031d428787a75852370631e2"></a><!-- doxytag: member="AbstractCache::cacheSize" ref="a3b7d8e12031d428787a75852370631e2" args="" -->
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>cacheSize</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ee0357340f21b0989bc8764db0fabce"></a><!-- doxytag: member="AbstractCache::map" ref="a4ee0357340f21b0989bc8764db0fabce" args="" -->
 unordered_map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acdd2296d58c689c9289be4ac3246b0fc"></a><!-- doxytag: member="AbstractCache::list" ref="acdd2296d58c689c9289be4ac3246b0fc" args="" -->
-vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>list</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe36acc627f10c65bfd04e3833011d7b"></a><!-- doxytag: member="AbstractCache::list" ref="abe36acc627f10c65bfd04e3833011d7b" args="" -->
+vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>list</b></td></tr>
 </table>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a7cba328082bcd2f8a02e52546b9dd244"></a><!-- doxytag: member="AbstractCache::deleteFromCache" ref="a7cba328082bcd2f8a02e52546b9dd244" args="()" -->
@@ -222,7 +230,7 @@ vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lis
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 10:31:02 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 22 2014 18:25:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
