@@ -15,7 +15,13 @@
  *@returns Web Content
  */
 string AbstractCache::getFromCache(string url){
-	updateList(url);
+
+	string webcontent = map[url];
+	
+	if(!webcontent.empty())
+	{
+		updateList(url);
+	}
 	return map[url];
 }
 
@@ -25,26 +31,36 @@ string AbstractCache::getFromCache(string url){
  *@param Web Content 
  */
 void AbstractCache::insertIntoCache(string url, string content){	
+
+	//Check if Already Exists
+	string webcontent = getFromCache(url);
+
+	//If Content is Empty
+	if(webcontent.empty())	
+	{
+
+		//If content fits into cache
+		if(cacheSize + content.capacity() < MAX_CACHE_SIZE){
 	
-	//If content fits into cache
-	if(cacheSize + content.capacity() < MAX_CACHE_SIZE){
-		
-		//Insert the URL and Web Content into the Map
-		map[url] = content;
+			//Insert the URL and Web Content into the Map
+			map[url] = content;
 
-		//Push the URL into the Queue
-		list.push_back(url);
+			//Insert the URL into the Queue
+			insertIntoList(url, content);
 
-		//Update Cache Size
-		cacheSize = cacheSize + content.capacity();
-	}
-	else{//Content Does not fit into cache
-	
-		//Delete from Cache
-		deleteFromCache();
+			//list.push_back(url);
 
-		//Insert URL and Web Content into Cache
-		insertIntoCache(url,content);			
+			//Update Cache Size
+			cacheSize = cacheSize + content.capacity();
+		}
+		else{//Content Does not fit into cache
+
+			//Delete from Cache
+			deleteFromCache();
+
+			//Insert URL and Web Content into Cache
+			insertIntoCache(url,content);			
+		}
 	}
 
 }
@@ -60,13 +76,15 @@ void AbstractCache::deleteFromCache(){
 
 	//Get the URL and web content from the queue
 	string url = list[index];
-
+	
 	//Update Cache Size
 	cacheSize = cacheSize - map[url].capacity();
 
 	//Remove entry from Queue and Hashmap
-	map.erase(url);	
+	map.erase(url);
+
 	list.erase(list.begin() + index);
+
 }
 
 //Empty Destructor

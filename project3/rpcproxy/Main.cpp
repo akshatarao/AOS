@@ -1,12 +1,13 @@
 #include "LRUCache.h"
 #include "FIFOCache.h"
+#include "RandomCache.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
 	
-	LRUCache cache;
+	RandomCache cache;
 	string test = "key1";
 	string testValue = "value1";
 	string test2 = "key2";
@@ -20,7 +21,7 @@ int main(){
 	cout << "value looked up = \t"; 
 	cout<< cache.getFromCache(test) << "\n";
 	cout << cache.cacheSize << "\n";
-	cout << cache.list.at(0)<< "\n"; 
+	cout << cache.list.at(0)<< "H\n"; 
 	cache.insertIntoCache(test3,testValue3);
 	cout << cache.cacheSize << "\n";
 	cout << "poohoo\n";

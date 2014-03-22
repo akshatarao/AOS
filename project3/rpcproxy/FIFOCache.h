@@ -14,7 +14,7 @@
 using namespace std;
 
 /**
- *@brief FIFO Cache
+ *@brief FIFOCache
  */
 class FIFOCache : public AbstractCache 
 {
@@ -23,4 +23,5 @@ class FIFOCache : public AbstractCache
 	FIFOCache();
 	void updateList(string url);
 	int pickIndexForNextDeletion();
+	void insertIntoList(string url, string content);
 };

@@ -28,6 +28,18 @@ int FIFOCache::pickIndexForNextDeletion(){
 }
 
 /**
+ *@brief Insert URL to Back of FIFO Queue
+ *@param url - URL
+ *@param content - Web Content	
+ *@returns none
+ */
+void FIFOCache::insertIntoList(string url, string content){
+
+	//Push url to the back of queue
+	list.push_back(url);
+}
+
+/**
  *@brief Destructor
  */
 FIFOCache::~FIFOCache(){

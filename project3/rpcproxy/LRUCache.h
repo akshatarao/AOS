@@ -22,4 +22,5 @@ public:
 	~LRUCache();
 	void updateList(string url);
 	int pickIndexForNextDeletion();
+	void insertIntoList(string url, string content);
 };

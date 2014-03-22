@@ -20,15 +20,20 @@ using namespace std;
 class AbstractCache {
 
 public:
+	//members
 	unsigned long cacheSize;
         unordered_map<string, string> map;
         vector<string> list;
 
+	//concrete implementations
 	void insertIntoCache(string url, string content);
 	void deleteFromCache();
 	string getFromCache(string url);
+
+	//abstract implementations
         virtual void updateList(string url) = 0;
  	virtual int pickIndexForNextDeletion() = 0;
+	virtual void insertIntoList(string url, string content) = 0;
 
 	virtual ~AbstractCache() = 0;
 };
