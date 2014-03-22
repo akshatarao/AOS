@@ -1,5 +1,6 @@
 #include "LRUCache.h"
 #include "FIFOCache.h"
+#include "LMUCache.h"
 #include "RandomCache.h"
 #include <iostream>
 
@@ -7,7 +8,7 @@ using namespace std;
 
 int main(){
 	
-	LRUCache cache;
+	LMUCache cache;
 	string test = "key1";
 	string testValue = "value1";
 	string test2 = "key2";
@@ -24,6 +25,7 @@ int main(){
 	cout << cache.list.at(0).url<< "H\n"; 
 	cache.insertIntoCache(test3,testValue3);
 	cout << cache.cacheSize << "\n";
+	cout << cache.list.at(0).url <<"L\n"; 	
 	cout << "poohoo\n";
 	return 0;
 }

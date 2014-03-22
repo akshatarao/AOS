@@ -21,6 +21,7 @@ class FIFOCache : public AbstractCache
   public:
 	~FIFOCache();
 	FIFOCache();
+	
 	void updateList(string url);
 	int pickIndexForNextDeletion();
 	void insertIntoList(string url, string content);

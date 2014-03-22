@@ -35,6 +35,8 @@ class URLNode
 class AbstractCache {
 
 public:
+	
+	unsigned long maxCacheSize;
 	//members
 	unsigned long cacheSize;
         unordered_map<string, string> map;
@@ -44,6 +46,7 @@ public:
 	void insertIntoCache(string url, string content);
 	void deleteFromCache();
 	string getFromCache(string url);
+	void setMaxCacheSize(long size);
 
 	//abstract implementations
         virtual void updateList(string url) = 0;
@@ -51,6 +54,11 @@ public:
 	virtual void insertIntoList(string url, string content) = 0;
 
 	virtual ~AbstractCache() = 0;
+
+	AbstractCache()
+	{
+		maxCacheSize = MAX_CACHE_SIZE;
+	}
 };
 
 #endif

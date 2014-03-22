@@ -2,7 +2,7 @@
 #include<iostream>
 #include<cstring> 
 /**
- *@file LRUCache.h
+ *@file LRUCache.cpp
  */
 
 /**
@@ -18,6 +18,8 @@ void LRUCache::updateList(string url){
 
 	int pos = 0;
 	URLNode urlNode("","");
+
+       //Get the Position where the URL entry was initially stored
 	
 	for(vector<URLNode>::size_type i = 0; i != list.size(); i++)
 	{
@@ -31,8 +33,6 @@ void LRUCache::updateList(string url){
 		}
 	}
 			
-	//Get the Position where the URL entry was initially stored
-//	int pos = find(list.begin(), list.end(), url) - list.begin();
 
 	//Erase the entry from that position
 	list.erase(list.begin() + pos);

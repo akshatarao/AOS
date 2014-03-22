@@ -40,7 +40,7 @@ void AbstractCache::insertIntoCache(string url, string content){
 	{
 
 		//If content fits into cache
-		if(cacheSize + content.capacity() < MAX_CACHE_SIZE){
+		if(cacheSize + content.capacity() < maxCacheSize){
 	
 			//Insert the URL and Web Content into the Map
 			map[url] = content;
@@ -87,6 +87,10 @@ void AbstractCache::deleteFromCache(){
 
 }
 
+void AbstractCache::setMaxCacheSize(long maximumCacheSize)
+{
+	maxCacheSize = maximumCacheSize;
+}
 //Empty Destructor
 AbstractCache::~AbstractCache(){
 
