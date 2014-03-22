@@ -1,0 +1,87 @@
+\hypertarget{classLRUCache}{\section{\-L\-R\-U\-Cache \-Class \-Reference}
+\label{classLRUCache}\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}}
+}
+
+
+\hyperlink{classLRUCache}{\-L\-R\-U\-Cache}.  
+
+
+
+
+{\ttfamily \#include $<$\-L\-R\-U\-Cache.\-h$>$}
+
+\-Inheritance diagram for \-L\-R\-U\-Cache\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLRUCache}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}{\hyperlink{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}{\-L\-R\-U\-Cache} ()}\label{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}
+
+\begin{DoxyCompactList}\small\item\em \-L\-R\-U \-Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}{\hyperlink{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}{$\sim$\-L\-R\-U\-Cache} ()}\label{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}
+
+\begin{DoxyCompactList}\small\item\em \-L\-R\-U \-Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}{update\-List} (string url)
+\begin{DoxyCompactList}\small\item\em \-Update the \-List. \end{DoxyCompactList}\item 
+int \hyperlink{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}{pick\-Index\-For\-Next\-Deletion} ()
+\begin{DoxyCompactList}\small\item\em \-Select \-Next \-Candidate for \-Eviction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{classLRUCache}{\-L\-R\-U\-Cache}. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
+\index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!LRUCache@{\-L\-R\-U\-Cache}}
+\subsubsection[{pick\-Index\-For\-Next\-Deletion}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-L\-R\-U\-Cache\-::pick\-Index\-For\-Next\-Deletion} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}
+
+
+\-Select \-Next \-Candidate for \-Eviction. 
+
+\begin{DoxyReturn}{\-Returns}
+index of next candidate for eviction 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+\hypertarget{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!update\-List@{update\-List}}
+\index{update\-List@{update\-List}!LRUCache@{\-L\-R\-U\-Cache}}
+\subsubsection[{update\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-L\-R\-U\-Cache\-::update\-List} (
+\begin{DoxyParamCaption}
+\item[{string}]{url}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}
+
+
+\-Update the \-List. 
+
+\begin{DoxyAuthor}{\-Author}
+\-Spoorthi \-Ravi 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & -\/ \-U\-R\-L \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{LRUCache_8h}{\-L\-R\-U\-Cache.\-h}\item 
+\-L\-R\-U\-Cache.\-cpp\end{DoxyCompactItemize}
