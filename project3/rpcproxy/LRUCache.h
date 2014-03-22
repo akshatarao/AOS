@@ -9,6 +9,7 @@ using namespace std;
 class LRUCache : public AbstractCache {
 public:
 	LRUCache();
+	~LRUCache();
 	void updateList(string url);
 	int pickIndexForNextDeletion();
 };

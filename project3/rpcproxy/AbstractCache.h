@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#define MAX_CACHE_SIZE 1024000
+#define MAX_CACHE_SIZE 20
 using namespace std;
 
 class AbstractCache {
