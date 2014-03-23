@@ -3,11 +3,12 @@ THRIFT_DIR = /usr/local/include/thrift
 LIB_DIR = /usr/local/lib
 CPP_SRC_LIBS=.libs
 GEN_SRC = gen-cpp/RPCProxy_constants.cpp gen-cpp/RPCProxy.cpp gen-cpp/RPCProxy_types.cpp
+CACHE_SRC = FIFOCache.cpp RandomCache.cpp LRUCache.cpp LMUCache.cpp AbstractCache.cpp
 
 default: clean server client cache FIFO LRU Random LMU main temp
 
 server: RPCProxyServer.cpp
-	g++ -o RPCProxyServer -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp RPCProxyServer.cpp ${GEN_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS} -lcurl -L/usr/lib/x86_64-linux-gnu
+	g++ -o RPCProxyServer -std=c++0x -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp -I. RPCProxyServer.cpp ${GEN_SRC} ${CACHE_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS} -lcurl -L/usr/lib/x86_64-linux-gnu
 
 client: RPCProxyClient.cpp
 	g++ -o RPCProxyClient -I${THRIFT_DIR} -I${BOOST_DIR}  -I/gen-cpp RPCProxyClient.cpp ${GEN_SRC} -lthrift  -L${LIB_DIR} -Wl,-rpath=${CPP_SRC_LIBS}
