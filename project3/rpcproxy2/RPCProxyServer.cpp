@@ -23,6 +23,13 @@ using boost::shared_ptr;
 
 using namespace  ::rpcproxy;
 
+#define FIFO_CACHE "FIFO"
+#define LRU_CACHE "LRU"
+#define LMU_CACHE "LMU"
+#define RANDOM_CACHE "RANDOM"
+
+AbstractCache *cache = NULL;
+
 class RPCProxyHandler : virtual public RPCProxyIf {
  public:
   RPCProxyHandler() {
@@ -44,32 +51,52 @@ class RPCProxyHandler : virtual public RPCProxyIf {
    {
 	//TODO: Input Validation for URL - NULL, Incorrect
 
-	CURL *curl;
-	CURLcode res;
- 	std::string readBuffer;
+	if(cache != NULL)
+        {
+		string webcontent = cache->getFromCache(url);
+
+		if(!webcontent.empty())
+		{
+			_return = webcontent;
+		}
+		else
+		{
+			CURL *curl;
+			CURLcode res;
+		 	std::string readBuffer;
 	
-  	curl = curl_easy_init();
+		  	curl = curl_easy_init();
   
-	if(curl) 
-	{
+			if(curl) 
+			{
 
-		const char* urlLink = url.data();
-    		curl_easy_setopt(curl, CURLOPT_URL, urlLink);
-    		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-    		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-    		res = curl_easy_perform(curl);
-    		curl_easy_cleanup(curl);
+				const char* urlLink = url.data();
+		    		curl_easy_setopt(curl, CURLOPT_URL, urlLink);
+    				curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+		    		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+    				res = curl_easy_perform(curl);
+		    		curl_easy_cleanup(curl);
 
-    		std::cout << readBuffer;
-	}	
+    				std::cout << readBuffer;
+			}
 
-	std::string out = readBuffer + std::string("\n");
+			std::string out = readBuffer + std::string("\n");
 	
-	_return = out;  
+			_return = out;
+
+			if(_return.capacity() > cache->cacheSize)
+			{
+				cout << "\nRequested web content is not cached as its size exceeds cache size. \n";
+				cout.flush();
+			}
+			else
+			{
+				cache->insertIntoCache(url, out);
+			}
+		}
+  	}
   }
 };
-
-//AbstractCache cache;
 
 int main(int argc, char **argv) {
 
@@ -77,13 +104,43 @@ int main(int argc, char **argv) {
   int port = 9090;
  
   //TODO: Validate the Inputs
-  char* cacheType = argv[1];
+  const char* cacheType = argv[1];
   long cacheSize = atol(argv[2]);
  	
-  cout << "\nCache Type" << cacheType;
+  cout << "\nCache Type: WHAAT" << cacheType;
   cout << "\nCache Size" << cacheSize;
 
-  FIFOCache cache;
+  if(strcmp(cacheType, FIFO_CACHE) == 0)
+  {
+	cout << "\nFIFO Replacement Policy Selected for Cache"; 
+  	cache = new FIFOCache();
+  }
+  else if(strcmp(cacheType, LRU_CACHE) == 0)
+  {
+	cout << "\nLRU Replacement Policy Selected for Cache";
+	cache = new LRUCache();
+  }
+  else if(strcmp(cacheType, LMU_CACHE) == 0)
+  {
+	cout << "\nLMU Replacement Policy Selected for Cache";
+        cache = new LMUCache();
+  }
+  else if(strcmp(cacheType, RANDOM_CACHE) == 0)
+  {
+	cout << "\nRandom Replacement Policy Selected for Cache";
+	cache = new RandomCache();
+  }
+  else
+  {
+	cout <<"\nUnsupported Cache Type";
+	//TODO: Check hw the client connection behaves here
+	exit(1);
+  }
+
+  //TODO: Modify Cache size according to input
+  //TODO: Make Cache a member of RPCProxyHandler
+  //TODO: Timestamps for cache 	
+  cout.flush();
 
   boost::shared_ptr<RPCProxyHandler> handler(new RPCProxyHandler());
   boost::shared_ptr<TProcessor> processor(new RPCProxyProcessor(handler));
