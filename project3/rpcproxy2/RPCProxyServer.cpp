@@ -77,21 +77,29 @@ class RPCProxyHandler : virtual public RPCProxyIf {
     				res = curl_easy_perform(curl);
 		    		curl_easy_cleanup(curl);
 
-    				std::cout << readBuffer;
+    		//		std::cout << readBuffer;
 			}
 
 			std::string out = readBuffer + std::string("\n");
 	
 			_return = out;
 
-			if(_return.capacity() > cache->cacheSize)
+			if(_return.capacity() > cache->maxCacheSize)
 			{
+				cout << "\nWeb Content Size: " << _return.capacity();
+				cout << "\nCache Size: " << cache->maxCacheSize;
 				cout << "\nRequested web content is not cached as its size exceeds cache size. \n";
 				cout.flush();
 			}
 			else
 			{
+				cout << "\nInserting Web Content of size " << _return.capacity() << "into the cache";
+				cout << "\nCurrent Cache Size before Insertion: " << cache->cacheSize;
+				
+				struct timeval startTime;
 				cache->insertIntoCache(url, out);
+				cout << "\nCurrent Cache Size after Insertion: " << cache->cacheSize;
+				cout.flush();
 			}
 		}
   	}
@@ -102,7 +110,15 @@ int main(int argc, char **argv) {
 
   
   int port = 9090;
+
+ if(argc < 3)
+ {
+	printf("\nSyntax: %s <cache-type> <cache-size-in-KB>", argv[0]);
+	printf("\nOptions: cache-type - FIFO, RANDOM, LRU, LMU");
+	exit(1);
+ } 
  
+
   //TODO: Validate the Inputs
   const char* cacheType = argv[1];
   long cacheSize = atol(argv[2]);
@@ -137,6 +153,8 @@ int main(int argc, char **argv) {
 	exit(1);
   }
 
+  cache->setMaxCacheSize(cacheSize * 1024);
+	
   //TODO: Modify Cache size according to input
   //TODO: Make Cache a member of RPCProxyHandler
   //TODO: Timestamps for cache 	

@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
   try {
     transport->open();
 
-    client.hello();
+//    client.hello();
 
     string content;
     const char* url = argv[1];
