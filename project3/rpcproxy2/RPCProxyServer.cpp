@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
+#include <ctime>
 
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;
@@ -32,12 +33,19 @@ AbstractCache *cache = NULL;
 
 class RPCProxyHandler : virtual public RPCProxyIf {
  public:
-  RPCProxyHandler() {
-    // Your initialization goes here
+ int numberOfRequests;
+ double totalTime;
+ int cacheHits;
+ 
+ RPCProxyHandler() {
+    
+	numberOfRequests = 0;
+	totalTime = 0.0;
+	cacheHits = 0;
   }
 
   void hello() {
-    // Your implementation goes here
+    
     printf("hello\n");
   }
 
@@ -51,12 +59,23 @@ class RPCProxyHandler : virtual public RPCProxyIf {
    {
 	//TODO: Input Validation for URL - NULL, Incorrect
 
+	//struct timeval starttime;
+	//struct timeval endtime;
+	clock_t beginTime = clock(), endTime = clock();
+
+	numberOfRequests++;
+
+
 	if(cache != NULL)
         {
+		//gettimeofday(&starttime, NULL);
+		beginTime = clock();  
 		string webcontent = cache->getFromCache(url);
 
 		if(!webcontent.empty())
 		{
+			//gettimeofday(&endtime, NULL);
+			cacheHits++;
 			_return = webcontent;
 		}
 		else
@@ -95,14 +114,40 @@ class RPCProxyHandler : virtual public RPCProxyIf {
 				cout << "\nInserting Web Content of size " << _return.capacity() << " bytes into the cache";
 				cout << "\nRemaining cache capacity before insertion: " << cache->cacheSize << " bytes";
 				
-				struct timeval startTime;
 				cache->insertIntoCache(url, out);
+				//gettimeofday(&endtime, NULL);
+				//endTime = clock();
 				cout << "\nRemaining cache capacity after Insertion: " << cache->cacheSize << " bytes";
 				cout.flush();
 			}
 		}
+		endTime = clock();
+
   	}
+
+	//Calculate total Time;
+
+	//double startTimeDouble = starttime.tv_sec;
+	//double endTimeDouble = endtime.tv_sec;
+	
+
+	float timeTaken = float(endTime - beginTime) / CLOCKS_PER_SEC;
+	totalTime += timeTaken;  
+
+}
+
+  void printServerStats() {
+    // Your implementation goes here
+
+    double averageTime = ((double)totalTime *1000)/numberOfRequests;
+		
+    cout << "\nCache Hits: " << cacheHits;
+    cout << "\nNumber of Requests: " << numberOfRequests;
+    cout << "\n Cache Hit Ratio: " << ((cacheHits*100)/numberOfRequests);
+    cout << "\nAverage Time to Serve Requests: "  << averageTime << "milliseconds\n";
+    cout.flush(); 	
   }
+
 };
 
 int main(int argc, char **argv) {
@@ -128,27 +173,32 @@ int main(int argc, char **argv) {
 
   if(strcmp(cacheType, FIFO_CACHE) == 0)
   {
-	cout << "\nFIFO Replacement Policy Selected for Cache"; 
+	cout << "\nFIFO Replacement Policy Selected for Cache\n";
+	cout.flush(); 
   	cache = new FIFOCache();
   }
   else if(strcmp(cacheType, LRU_CACHE) == 0)
   {
-	cout << "\nLRU Replacement Policy Selected for Cache";
+	cout << "\nLRU Replacement Policy Selected for Cache\n";
+	cout.flush();
 	cache = new LRUCache();
   }
   else if(strcmp(cacheType, LMU_CACHE) == 0)
   {
-	cout << "\nLMU Replacement Policy Selected for Cache";
+	cout << "\nLMU Replacement Policy Selected for Cache\n";
+	cout.flush();
         cache = new LMUCache();
   }
   else if(strcmp(cacheType, RANDOM_CACHE) == 0)
   {
-	cout << "\nRandom Replacement Policy Selected for Cache";
+	cout << "\nRandom Replacement Policy Selected for Cache\n";
+	cout.flush();
 	cache = new RandomCache();
   }
   else
   {
-	cout <<"\nUnsupported Cache Type";
+	cout <<"\nUnsupported Cache Type\n";
+	cout.flush();
 	//TODO: Check hw the client connection behaves here
 	exit(1);
   }

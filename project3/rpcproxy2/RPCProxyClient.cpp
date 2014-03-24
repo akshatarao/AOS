@@ -87,7 +87,6 @@ int main(int argc, char** argv) {
 		string content;
 		cout << "\nURL: " << line;
 		client.fetchURLContent(content, line);
-		cout << "\nO/P:" << content;
 	}
 
 	in_stream.close();
@@ -99,7 +98,8 @@ int main(int argc, char** argv) {
 	client.fetchURLContent(content, url);
 	cout << "URL Output: " << content;	
     }	
-	
+
+    client.printServerStats();	
      transport->close();
   } catch (TException &tx) {
     printf("ERROR: %s\n", tx.what());

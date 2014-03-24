@@ -32,6 +32,11 @@ class RPCProxyHandler : virtual public RPCProxyIf {
     printf("fetchURLContent\n");
   }
 
+  void printServerStats() {
+    // Your implementation goes here
+    printf("printServerStats\n");
+  }
+
 };
 
 int main(int argc, char **argv) {
