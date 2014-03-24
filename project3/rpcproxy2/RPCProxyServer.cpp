@@ -77,7 +77,6 @@ class RPCProxyHandler : virtual public RPCProxyIf {
     				res = curl_easy_perform(curl);
 		    		curl_easy_cleanup(curl);
 
-    		//		std::cout << readBuffer;
 			}
 
 			std::string out = readBuffer + std::string("\n");
@@ -86,19 +85,19 @@ class RPCProxyHandler : virtual public RPCProxyIf {
 
 			if(_return.capacity() > cache->maxCacheSize)
 			{
-				cout << "\nWeb Content Size: " << _return.capacity();
-				cout << "\nCache Size: " << cache->maxCacheSize;
+				cout << "\nWeb Content Size: " << _return.capacity() << " bytes";
+				cout << "\nCache Size: " << cache->maxCacheSize << " bytes";
 				cout << "\nRequested web content is not cached as its size exceeds cache size. \n";
 				cout.flush();
 			}
 			else
 			{
-				cout << "\nInserting Web Content of size " << _return.capacity() << "into the cache";
-				cout << "\nCurrent Cache Size before Insertion: " << cache->cacheSize;
+				cout << "\nInserting Web Content of size " << _return.capacity() << " bytes into the cache";
+				cout << "\nRemaining cache capacity before insertion: " << cache->cacheSize << " bytes";
 				
 				struct timeval startTime;
 				cache->insertIntoCache(url, out);
-				cout << "\nCurrent Cache Size after Insertion: " << cache->cacheSize;
+				cout << "\nRemaining cache capacity after Insertion: " << cache->cacheSize << " bytes";
 				cout.flush();
 			}
 		}
@@ -111,10 +110,10 @@ int main(int argc, char **argv) {
   
   int port = 9090;
 
- if(argc < 3)
+ if(argc < 4)
  {
-	printf("\nSyntax: %s <cache-type> <cache-size-in-KB>", argv[0]);
-	printf("\nOptions: cache-type - FIFO, RANDOM, LRU, LMU");
+	printf("\nSyntax: %s <cache-type> <cache-size-in-KB> <port>", argv[0]);
+	printf("\nOptions: cache-type - FIFO, RANDOM, LRU, LMU\n");
 	exit(1);
  } 
  
@@ -122,9 +121,10 @@ int main(int argc, char **argv) {
   //TODO: Validate the Inputs
   const char* cacheType = argv[1];
   long cacheSize = atol(argv[2]);
- 	
-  cout << "\nCache Type: WHAAT" << cacheType;
-  cout << "\nCache Size" << cacheSize;
+  port = atoi(argv[3]);
+	
+  cout << "\nCache Type: " << cacheType;
+  cout << "\nCache Size: " << (cacheSize * 1024) << " bytes";
 
   if(strcmp(cacheType, FIFO_CACHE) == 0)
   {
