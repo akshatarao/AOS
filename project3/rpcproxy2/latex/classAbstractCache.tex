@@ -1,6 +1,15 @@
 \hypertarget{classAbstractCache}{\section{\-Abstract\-Cache \-Class \-Reference}
 \label{classAbstractCache}\index{\-Abstract\-Cache@{\-Abstract\-Cache}}
 }
+
+
+\-Abstract \-Cache.  
+
+
+
+
+{\ttfamily \#include $<$\-Abstract\-Cache.\-h$>$}
+
 \-Inheritance diagram for \-Abstract\-Cache\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,39 +20,47 @@
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{classAbstractCache_adcfda4aa5503e9ea60d2bc5575c04cd3}{insert\-Into\-Cache} (string url, string content)
-\begin{DoxyCompactList}\small\item\em \-Insert \-Into \-Cache. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L, \-Webcontent into cache. \end{DoxyCompactList}\item 
 void \hyperlink{classAbstractCache_a7cba328082bcd2f8a02e52546b9dd244}{delete\-From\-Cache} ()
-\begin{DoxyCompactList}\small\item\em \-Delete \-Web \-Content \-From \-Cache. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Delete the candidate \-U\-R\-L from cache. \end{DoxyCompactList}\item 
 string \hyperlink{classAbstractCache_a9b49b5835bbe2fa878bac959ebbec925}{get\-From\-Cache} (string url)
-\begin{DoxyCompactList}\small\item\em \-Get \-Web \-Content from \-Cache. \end{DoxyCompactList}\item 
-\hypertarget{classAbstractCache_a0b8d729d097b1726cb01fa8d35a25e62}{void {\bfseries set\-Max\-Cache\-Size} (long size)}\label{classAbstractCache_a0b8d729d097b1726cb01fa8d35a25e62}
+\begin{DoxyCompactList}\small\item\em \-Get \-U\-R\-L \-From \-Cache. \end{DoxyCompactList}\item 
+void \hyperlink{classAbstractCache_a0b8d729d097b1726cb01fa8d35a25e62}{set\-Max\-Cache\-Size} (long size)
+\begin{DoxyCompactList}\small\item\em \-Set \-Maximum \-Size for \-Cache. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}{virtual void \hyperlink{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}{update\-List} (string url)=0}\label{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}
 
-\item 
-\hypertarget{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}{virtual void {\bfseries update\-List} (string url)=0}\label{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}
+\begin{DoxyCompactList}\small\item\em \-Update the \-Queue for \-Web \-Content \-Eviction \-Candidates. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}{virtual int \hyperlink{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}{pick\-Index\-For\-Next\-Deletion} ()=0}\label{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}
 
-\item 
-\hypertarget{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}{virtual int {\bfseries pick\-Index\-For\-Next\-Deletion} ()=0}\label{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}
+\begin{DoxyCompactList}\small\item\em \-Select the next candidate for eviction. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}{virtual void \hyperlink{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}{insert\-Into\-List} (string url, string content)=0}\label{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}
 
-\item 
-\hypertarget{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}{virtual void {\bfseries insert\-Into\-List} (string url, string content)=0}\label{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}
+\begin{DoxyCompactList}\small\item\em \-Insert \-Eviction \-Candidate into \-Queue. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_aa5ae534cc8719753df92cec13f400f8b}{virtual \hyperlink{classAbstractCache_aa5ae534cc8719753df92cec13f400f8b}{$\sim$\-Abstract\-Cache} ()=0}\label{classAbstractCache_aa5ae534cc8719753df92cec13f400f8b}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_a3a1cb850c9d9db8a4dd42744e1756da4}{\hyperlink{classAbstractCache_a3a1cb850c9d9db8a4dd42744e1756da4}{\-Abstract\-Cache} ()}\label{classAbstractCache_a3a1cb850c9d9db8a4dd42744e1756da4}
+
+\begin{DoxyCompactList}\small\item\em \-Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Public \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classAbstractCache_a5db4a215715082ca927f75fec6fe274c}{unsigned long {\bfseries max\-Cache\-Size}}\label{classAbstractCache_a5db4a215715082ca927f75fec6fe274c}
+\hypertarget{classAbstractCache_a5db4a215715082ca927f75fec6fe274c}{unsigned long \hyperlink{classAbstractCache_a5db4a215715082ca927f75fec6fe274c}{max\-Cache\-Size}}\label{classAbstractCache_a5db4a215715082ca927f75fec6fe274c}
 
-\item 
-\hypertarget{classAbstractCache_a3b7d8e12031d428787a75852370631e2}{unsigned long {\bfseries cache\-Size}}\label{classAbstractCache_a3b7d8e12031d428787a75852370631e2}
+\begin{DoxyCompactList}\small\item\em \-Max \-Cache \-Size. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_a3b7d8e12031d428787a75852370631e2}{unsigned long \hyperlink{classAbstractCache_a3b7d8e12031d428787a75852370631e2}{cache\-Size}}\label{classAbstractCache_a3b7d8e12031d428787a75852370631e2}
 
-\item 
-\hypertarget{classAbstractCache_a4ee0357340f21b0989bc8764db0fabce}{unordered\-\_\-map$<$ string, string $>$ {\bfseries map}}\label{classAbstractCache_a4ee0357340f21b0989bc8764db0fabce}
+\begin{DoxyCompactList}\small\item\em \-Cache \-Size. \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_a4ee0357340f21b0989bc8764db0fabce}{unordered\-\_\-map$<$ string, string $>$ \hyperlink{classAbstractCache_a4ee0357340f21b0989bc8764db0fabce}{map}}\label{classAbstractCache_a4ee0357340f21b0989bc8764db0fabce}
 
-\item 
-\hypertarget{classAbstractCache_abe36acc627f10c65bfd04e3833011d7b}{vector$<$ \hyperlink{classURLNode}{\-U\-R\-L\-Node} $>$ {\bfseries list}}\label{classAbstractCache_abe36acc627f10c65bfd04e3833011d7b}
+\begin{DoxyCompactList}\small\item\em \-Cache \-Hash\-Map of $<$\-U\-R\-L,\-Web\-Content$>$ \end{DoxyCompactList}\item 
+\hypertarget{classAbstractCache_abe36acc627f10c65bfd04e3833011d7b}{vector$<$ \hyperlink{classURLNode}{\-U\-R\-L\-Node} $>$ \hyperlink{classAbstractCache_abe36acc627f10c65bfd04e3833011d7b}{list}}\label{classAbstractCache_abe36acc627f10c65bfd04e3833011d7b}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-U\-R\-L \-Priority \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{\-Detailed \-Description}
+\-Abstract \-Cache. 
 
 \subsection{\-Member \-Function \-Documentation}
 \hypertarget{classAbstractCache_a7cba328082bcd2f8a02e52546b9dd244}{\index{\-Abstract\-Cache@{\-Abstract\-Cache}!delete\-From\-Cache@{delete\-From\-Cache}}
@@ -55,7 +72,9 @@ string \hyperlink{classAbstractCache_a9b49b5835bbe2fa878bac959ebbec925}{get\-Fro
 )}}\label{classAbstractCache_a7cba328082bcd2f8a02e52546b9dd244}
 
 
-\-Delete \-Web \-Content \-From \-Cache. 
+\-Delete the candidate \-U\-R\-L from cache. 
+
+\-Delete \-Web \-Content \-From \-Cache.
 
 \begin{DoxyReturn}{\-Returns}
 none 
@@ -69,7 +88,9 @@ none
 )}}\label{classAbstractCache_a9b49b5835bbe2fa878bac959ebbec925}
 
 
-\-Get \-Web \-Content from \-Cache. 
+\-Get \-U\-R\-L \-From \-Cache. 
+
+\-Get \-Web \-Content from \-Cache.
 
 
 \begin{DoxyParams}{\-Parameters}
@@ -89,7 +110,9 @@ none
 )}}\label{classAbstractCache_adcfda4aa5503e9ea60d2bc5575c04cd3}
 
 
-\-Insert \-Into \-Cache. 
+\-Insert \-U\-R\-L, \-Webcontent into cache. 
+
+\-Insert \-Into \-Cache.
 
 
 \begin{DoxyParams}{\-Parameters}
@@ -98,6 +121,27 @@ none
 {\em \-Web} & \-Content \\
 \hline
 \end{DoxyParams}
+\hypertarget{classAbstractCache_a0b8d729d097b1726cb01fa8d35a25e62}{\index{\-Abstract\-Cache@{\-Abstract\-Cache}!set\-Max\-Cache\-Size@{set\-Max\-Cache\-Size}}
+\index{set\-Max\-Cache\-Size@{set\-Max\-Cache\-Size}!AbstractCache@{\-Abstract\-Cache}}
+\subsubsection[{set\-Max\-Cache\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Abstract\-Cache\-::set\-Max\-Cache\-Size} (
+\begin{DoxyParamCaption}
+\item[{long}]{maximum\-Cache\-Size}
+\end{DoxyParamCaption}
+)}}\label{classAbstractCache_a0b8d729d097b1726cb01fa8d35a25e62}
+
+
+\-Set \-Maximum \-Size for \-Cache. 
+
+\-Set \-Maximum \-Cache \-Size.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em -\/} & maximum\-Cache\-Size -\/ \-Maximum \-Cache \-Size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+none 
+\end{DoxyReturn}
 
 
 \-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

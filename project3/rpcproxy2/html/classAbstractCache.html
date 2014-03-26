@@ -84,7 +84,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">AbstractCache Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="AbstractCache" --><div class="dynheader">
+<!-- doxytag: class="AbstractCache" -->
+<p>Abstract Cache.  
+ <a href="classAbstractCache.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="AbstractCache_8h_source.html">AbstractCache.h</a>&gt;</code></p>
+<div class="dynheader">
 Inheritance diagram for AbstractCache:</div>
 <div class="dyncontent">
  <div class="center">
@@ -102,31 +107,46 @@ Inheritance diagram for AbstractCache:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#adcfda4aa5503e9ea60d2bc5575c04cd3">insertIntoCache</a> (string url, string content)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert Into Cache.  <a href="#adcfda4aa5503e9ea60d2bc5575c04cd3"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert URL, Webcontent into cache.  <a href="#adcfda4aa5503e9ea60d2bc5575c04cd3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a7cba328082bcd2f8a02e52546b9dd244">deleteFromCache</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete Web Content From Cache.  <a href="#a7cba328082bcd2f8a02e52546b9dd244"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the candidate URL from cache.  <a href="#a7cba328082bcd2f8a02e52546b9dd244"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a9b49b5835bbe2fa878bac959ebbec925">getFromCache</a> (string url)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Web Content from Cache.  <a href="#a9b49b5835bbe2fa878bac959ebbec925"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b8d729d097b1726cb01fa8d35a25e62"></a><!-- doxytag: member="AbstractCache::setMaxCacheSize" ref="a0b8d729d097b1726cb01fa8d35a25e62" args="(long size)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMaxCacheSize</b> (long size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get URL From Cache.  <a href="#a9b49b5835bbe2fa878bac959ebbec925"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a0b8d729d097b1726cb01fa8d35a25e62">setMaxCacheSize</a> (long size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Maximum Size for Cache.  <a href="#a0b8d729d097b1726cb01fa8d35a25e62"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67552fbca85ce7dbc7e2c553b1036884"></a><!-- doxytag: member="AbstractCache::updateList" ref="a67552fbca85ce7dbc7e2c553b1036884" args="(string url)=0" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>updateList</b> (string url)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a67552fbca85ce7dbc7e2c553b1036884">updateList</a> (string url)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the Queue for Web Content Eviction Candidates. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9fe168b0b9167c27b94b4a3a1be788c"></a><!-- doxytag: member="AbstractCache::pickIndexForNextDeletion" ref="ae9fe168b0b9167c27b94b4a3a1be788c" args="()=0" -->
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>pickIndexForNextDeletion</b> ()=0</td></tr>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#ae9fe168b0b9167c27b94b4a3a1be788c">pickIndexForNextDeletion</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the next candidate for eviction. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a910756174d1ee21eac16a4be3f7c881a"></a><!-- doxytag: member="AbstractCache::insertIntoList" ref="a910756174d1ee21eac16a4be3f7c881a" args="(string url, string content)=0" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>insertIntoList</b> (string url, string content)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a910756174d1ee21eac16a4be3f7c881a">insertIntoList</a> (string url, string content)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert Eviction Candidate into Queue. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5ae534cc8719753df92cec13f400f8b"></a><!-- doxytag: member="AbstractCache::~AbstractCache" ref="aa5ae534cc8719753df92cec13f400f8b" args="()=0" -->
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#aa5ae534cc8719753df92cec13f400f8b">~AbstractCache</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a1cb850c9d9db8a4dd42744e1756da4"></a><!-- doxytag: member="AbstractCache::AbstractCache" ref="a3a1cb850c9d9db8a4dd42744e1756da4" args="()" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a3a1cb850c9d9db8a4dd42744e1756da4">AbstractCache</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5db4a215715082ca927f75fec6fe274c"></a><!-- doxytag: member="AbstractCache::maxCacheSize" ref="a5db4a215715082ca927f75fec6fe274c" args="" -->
-unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>maxCacheSize</b></td></tr>
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a5db4a215715082ca927f75fec6fe274c">maxCacheSize</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Max Cache Size. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b7d8e12031d428787a75852370631e2"></a><!-- doxytag: member="AbstractCache::cacheSize" ref="a3b7d8e12031d428787a75852370631e2" args="" -->
-unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>cacheSize</b></td></tr>
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a3b7d8e12031d428787a75852370631e2">cacheSize</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache Size. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ee0357340f21b0989bc8764db0fabce"></a><!-- doxytag: member="AbstractCache::map" ref="a4ee0357340f21b0989bc8764db0fabce" args="" -->
-unordered_map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
+unordered_map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#a4ee0357340f21b0989bc8764db0fabce">map</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache HashMap of &lt;URL,WebContent&gt; <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe36acc627f10c65bfd04e3833011d7b"></a><!-- doxytag: member="AbstractCache::list" ref="abe36acc627f10c65bfd04e3833011d7b" args="" -->
-vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>list</b></td></tr>
+vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAbstractCache.html#abe36acc627f10c65bfd04e3833011d7b">list</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">URL Priority Queue. <br/></td></tr>
 </table>
-<hr/><h2>Member Function Documentation</h2>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Abstract Cache. </p>
+</div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a7cba328082bcd2f8a02e52546b9dd244"></a><!-- doxytag: member="AbstractCache::deleteFromCache" ref="a7cba328082bcd2f8a02e52546b9dd244" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +161,8 @@ vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td
 </div>
 <div class="memdoc">
 
-<p>Delete Web Content From Cache. </p>
+<p>Delete the candidate URL from cache. </p>
+<p>Delete Web Content From Cache.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>none </dd></dl>
 
 </div>
@@ -161,7 +182,8 @@ vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td
 </div>
 <div class="memdoc">
 
-<p>Get Web Content from Cache. </p>
+<p>Get URL From Cache. </p>
+<p>Get Web Content from Cache.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">URL</td><td></td></tr>
@@ -197,7 +219,8 @@ vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td
 </div>
 <div class="memdoc">
 
-<p>Insert Into Cache. </p>
+<p>Insert URL, Webcontent into cache. </p>
+<p>Insert Into Cache.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">url</td><td>- URL </td></tr>
@@ -205,6 +228,33 @@ vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a0b8d729d097b1726cb01fa8d35a25e62"></a><!-- doxytag: member="AbstractCache::setMaxCacheSize" ref="a0b8d729d097b1726cb01fa8d35a25e62" args="(long size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classAbstractCache.html#a0b8d729d097b1726cb01fa8d35a25e62">AbstractCache::setMaxCacheSize</a> </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>maximumCacheSize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set Maximum Size for Cache. </p>
+<p>Set Maximum Cache Size.</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-</td><td>maximumCacheSize - Maximum Cache Size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>none </dd></dl>
 
 </div>
 </div>
@@ -218,7 +268,7 @@ vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -230,7 +280,7 @@ vector&lt; <a class="el" href="classURLNode.html">URLNode</a> &gt;&#160;</td><td
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 18:25:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 17:53:36 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

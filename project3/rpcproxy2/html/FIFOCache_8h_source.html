@@ -85,23 +85,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00005"></a>00005 
 <a name="l00014"></a>00014 <span class="keyword">using namespace </span>std;
 <a name="l00015"></a>00015 
-<a name="l00019"></a><a class="code" href="classFIFOCache.html">00019</a> <span class="keyword">class </span><a class="code" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a> : <span class="keyword">public</span> <a class="code" href="classAbstractCache.html">AbstractCache</a> 
+<a name="l00019"></a><a class="code" href="classFIFOCache.html">00019</a> <span class="keyword">class </span><a class="code" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a> : <span class="keyword">public</span> <a class="code" href="classAbstractCache.html" title="Abstract Cache.">AbstractCache</a> 
 <a name="l00020"></a>00020 {
 <a name="l00021"></a>00021   <span class="keyword">public</span>:
-<a name="l00022"></a>00022         ~<a class="code" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a>();
-<a name="l00023"></a>00023         <a class="code" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a>();
-<a name="l00024"></a>00024         
-<a name="l00025"></a>00025         <span class="keywordtype">void</span> updateList(<span class="keywordtype">string</span> url);
-<a name="l00026"></a>00026         <span class="keywordtype">int</span> pickIndexForNextDeletion();
-<a name="l00027"></a>00027         <span class="keywordtype">void</span> insertIntoList(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content);
-<a name="l00028"></a>00028 };
+<a name="l00022"></a>00022 
+<a name="l00024"></a>00024         ~<a class="code" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a>();
+<a name="l00025"></a>00025 
+<a name="l00027"></a>00027         <a class="code" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a>();
+<a name="l00028"></a>00028         
+<a name="l00030"></a>00030         <span class="keywordtype">void</span> updateList(<span class="keywordtype">string</span> url);
+<a name="l00031"></a>00031 
+<a name="l00033"></a>00033         <span class="keywordtype">int</span> pickIndexForNextDeletion();
+<a name="l00034"></a>00034 
+<a name="l00036"></a>00036         <span class="keywordtype">void</span> insertIntoList(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content);
+<a name="l00037"></a>00037 };
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -113,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 18:25:51 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 17:53:35 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

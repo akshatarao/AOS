@@ -26,22 +26,34 @@ using namespace  ::rpcproxy;
 
 #define FIFO_CACHE "FIFO"
 #define LRU_CACHE "LRU"
-#define LMU_CACHE "LMU"
+#define LMU_CACHE "MAXS"
 #define RANDOM_CACHE "RANDOM"
 
 AbstractCache *cache = NULL;
 
+/**
+ *@brief - RPCProxyHandler
+ *
+ */
 class RPCProxyHandler : virtual public RPCProxyIf {
  public:
  int numberOfRequests;
  double totalTime;
  int cacheHits;
- 
+ int cacheRejections;	
+ int cacheMisses; 
+
+ /**
+  *@brief Constructor
+  */
  RPCProxyHandler() {
     
 	numberOfRequests = 0;
 	totalTime = 0.0;
 	cacheHits = 0;
+	cacheRejections = 0;
+	cacheMisses = 0;
+	
   }
 
   void hello() {
@@ -49,18 +61,23 @@ class RPCProxyHandler : virtual public RPCProxyIf {
     printf("hello\n");
   }
 
+  
    static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
    {
 	((std::string*)userp)->append((char*)contents, size * nmemb);
 	return size * nmemb;
    }
 
+   /**
+    *@brief Fetch Web Content for given URL
+    *@param _return - Web Content is saved here
+    *@param url - URL
+    *@returns - none 
+    */
    void fetchURLContent(std::string& _return, const std::string& url) 
    {
 	//TODO: Input Validation for URL - NULL, Incorrect
 
-	//struct timeval starttime;
-	//struct timeval endtime;
 	clock_t beginTime = clock(), endTime = clock();
 
 	numberOfRequests++;
@@ -68,18 +85,18 @@ class RPCProxyHandler : virtual public RPCProxyIf {
 
 	if(cache != NULL)
         {
-		//gettimeofday(&starttime, NULL);
 		beginTime = clock();  
 		string webcontent = cache->getFromCache(url);
 
 		if(!webcontent.empty())
 		{
-			//gettimeofday(&endtime, NULL);
 			cacheHits++;
 			_return = webcontent;
 		}
 		else
 		{
+			cacheMisses++;
+
 			CURL *curl;
 			CURLcode res;
 		 	std::string readBuffer;
@@ -104,6 +121,7 @@ class RPCProxyHandler : virtual public RPCProxyIf {
 
 			if(_return.capacity() > cache->maxCacheSize)
 			{
+				cacheRejections++;
 				cout << "\nWeb Content Size: " << _return.capacity() << " bytes";
 				cout << "\nCache Size: " << cache->maxCacheSize << " bytes";
 				cout << "\nRequested web content is not cached as its size exceeds cache size. \n";
@@ -115,8 +133,6 @@ class RPCProxyHandler : virtual public RPCProxyIf {
 				cout << "\nRemaining cache capacity before insertion: " << cache->cacheSize << " bytes";
 				
 				cache->insertIntoCache(url, out);
-				//gettimeofday(&endtime, NULL);
-				//endTime = clock();
 				cout << "\nRemaining cache capacity after Insertion: " << cache->cacheSize << " bytes";
 				cout.flush();
 			}
@@ -127,24 +143,20 @@ class RPCProxyHandler : virtual public RPCProxyIf {
 
 	//Calculate total Time;
 
-	//double startTimeDouble = starttime.tv_sec;
-	//double endTimeDouble = endtime.tv_sec;
-	
-
 	float timeTaken = float(endTime - beginTime) / CLOCKS_PER_SEC;
 	totalTime += timeTaken;  
 
 }
 
   void printServerStats() {
-    // Your implementation goes here
 
     double averageTime = ((double)totalTime *1000)/numberOfRequests;
 		
     cout << "\nCache Hits: " << cacheHits;
     cout << "\nNumber of Requests: " << numberOfRequests;
-    cout << "\n Cache Hit Ratio: " << ((cacheHits*100)/numberOfRequests);
-    cout << "\nAverage Time to Serve Requests: "  << averageTime << "milliseconds\n";
+    cout << "\nCache Hit Ratio: " << ((cacheHits*100)/numberOfRequests);
+    cout << "\nAverage Time to Serve Requests: "  << averageTime << "milliseconds";
+    cout << "\nCache Rejection Ratio: " << ((cacheRejections*100)/numberOfRequests) << "\n";	
     cout.flush(); 	
   }
 
@@ -158,7 +170,7 @@ int main(int argc, char **argv) {
  if(argc < 4)
  {
 	printf("\nSyntax: %s <cache-type> <cache-size-in-KB> <port>", argv[0]);
-	printf("\nOptions: cache-type - FIFO, RANDOM, LRU, LMU\n");
+	printf("\nOptions: cache-type - FIFO, RANDOM, LRU, MAXS\n");
 	exit(1);
  } 
  
@@ -185,7 +197,7 @@ int main(int argc, char **argv) {
   }
   else if(strcmp(cacheType, LMU_CACHE) == 0)
   {
-	cout << "\nLMU Replacement Policy Selected for Cache\n";
+	cout << "\nMAXS Replacement Policy Selected for Cache\n";
 	cout.flush();
         cache = new LMUCache();
   }
@@ -199,15 +211,11 @@ int main(int argc, char **argv) {
   {
 	cout <<"\nUnsupported Cache Type\n";
 	cout.flush();
-	//TODO: Check hw the client connection behaves here
 	exit(1);
   }
 
   cache->setMaxCacheSize(cacheSize * 1024);
 	
-  //TODO: Modify Cache size according to input
-  //TODO: Make Cache a member of RPCProxyHandler
-  //TODO: Timestamps for cache 	
   cout.flush();
 
   boost::shared_ptr<RPCProxyHandler> handler(new RPCProxyHandler());

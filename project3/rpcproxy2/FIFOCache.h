@@ -19,10 +19,19 @@ using namespace std;
 class FIFOCache : public AbstractCache 
 {
   public:
+
+	//!destructor
 	~FIFOCache();
+
+	//!constructor
 	FIFOCache();
 	
+	//!Update the Webcontent Eviction Candidate Queue
 	void updateList(string url);
+
+	//!Select the next candidate to be evicted
 	int pickIndexForNextDeletion();
+
+	//!Insert the URL, Webcontent into the Cache
 	void insertIntoList(string url, string content);
 };

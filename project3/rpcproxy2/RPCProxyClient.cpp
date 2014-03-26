@@ -23,7 +23,7 @@ using namespace boost;
 void printSyntax(char* executablePath)
 {
 	printf("\nSyntax: %s -url <url> <IP_Address> <Port>", executablePath);
-	printf("\nSyntax: %s -urlfile <url-file> <IP_Address> <Port>", executablePath);
+	printf("\nSyntax: %s -urlList <url-file> <IP_Address> <Port>", executablePath);
 	printf("\n");
 }
 int main(int argc, char** argv) {
@@ -34,8 +34,6 @@ int main(int argc, char** argv) {
   const char* url;
   const char* urlFileName;
 
-  //TODO: --help
-  //TODO: --input validation
 
   if(argc < 5)
   {
@@ -96,7 +94,7 @@ int main(int argc, char** argv) {
     {
 	string content;
 	client.fetchURLContent(content, url);
-	cout << "URL Output: " << content;	
+	cout << "URL Output: " << content << "\n";	
     }	
 
     client.printServerStats();	

@@ -17,9 +17,11 @@
 string AbstractCache::getFromCache(string url){
 
 	string webcontent = map[url];
-	
+
+	//If the content exists in the cache	
 	if(!webcontent.empty())
 	{
+		//Update location of the url in the queue based on replacement policy
 		updateList(url);
 	}
 	return map[url];
@@ -87,10 +89,16 @@ void AbstractCache::deleteFromCache(){
 
 }
 
+/**
+ *@brief Set Maximum Cache Size
+ *@param - maximumCacheSize - Maximum Cache Size
+ *@returns none
+ */
 void AbstractCache::setMaxCacheSize(long maximumCacheSize)
 {
 	maxCacheSize = maximumCacheSize;
 }
+
 //Empty Destructor
 AbstractCache::~AbstractCache(){
 

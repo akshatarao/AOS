@@ -17,6 +17,13 @@ using namespace std;
  *@file AbstractCache.h
  */
 
+class URLNode
+{
+ public:		
+	string content;
+	int contentSize;
+}
+
 class AbstractCache {
 
 public:

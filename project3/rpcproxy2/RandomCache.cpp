@@ -1,5 +1,11 @@
 #include "RandomCache.h"
 #include <cstdlib>
+
+
+/**
+ *@brief - This file contains the implementation for the Random Cache replacement policy
+ */
+
 /**
  *@file RandomCache.cpp
  */
@@ -7,6 +13,7 @@
 /**
  *@author Akshata Rao
  */
+
 
 /**
  *@brief Update the Queue

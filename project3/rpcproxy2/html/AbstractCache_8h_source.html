@@ -92,55 +92,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a><a class="code" href="classURLNode.html">00020</a> <span class="keyword">class </span><a class="code" href="classURLNode.html">URLNode</a>
 <a name="l00021"></a>00021 {
 <a name="l00022"></a>00022  <span class="keyword">public</span>:
-<a name="l00023"></a>00023         <span class="keywordtype">string</span> url;             
-<a name="l00024"></a>00024         <span class="keywordtype">string</span> content;
-<a name="l00025"></a>00025         <span class="keywordtype">int</span> contentSize;
+<a name="l00023"></a>00023         
+<a name="l00025"></a><a class="code" href="classURLNode.html#a56a91b8a8ce53f8f18eb084aa819f0b1">00025</a>         <span class="keywordtype">string</span> <a class="code" href="classURLNode.html#a56a91b8a8ce53f8f18eb084aa819f0b1" title="URL.">url</a>;
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027         <a class="code" href="classURLNode.html">URLNode</a>(<span class="keywordtype">string</span> urlInput, <span class="keywordtype">string</span> contentInput)
-<a name="l00028"></a>00028         {
-<a name="l00029"></a>00029                 url  = urlInput;
-<a name="l00030"></a>00030                 content = contentInput;
-<a name="l00031"></a>00031                 contentSize = contentInput.capacity();
-<a name="l00032"></a>00032         }
-<a name="l00033"></a>00033 };
+<a name="l00028"></a><a class="code" href="classURLNode.html#ab3472b86fa6d65fe261cfba0f87afac4">00028</a>         <span class="keywordtype">string</span> <a class="code" href="classURLNode.html#ab3472b86fa6d65fe261cfba0f87afac4" title="Web Content.">content</a>;
+<a name="l00029"></a>00029 
+<a name="l00031"></a><a class="code" href="classURLNode.html#ac71b006475d8b170f19110783451c5a7">00031</a>         <span class="keywordtype">int</span> <a class="code" href="classURLNode.html#ac71b006475d8b170f19110783451c5a7" title="Content Size.">contentSize</a>;
+<a name="l00032"></a>00032 
 <a name="l00034"></a>00034 
-<a name="l00035"></a><a class="code" href="classAbstractCache.html">00035</a> <span class="keyword">class </span><a class="code" href="classAbstractCache.html">AbstractCache</a> {
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 <span class="keyword">public</span>:
-<a name="l00038"></a>00038         
-<a name="l00039"></a>00039         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> maxCacheSize;
-<a name="l00040"></a>00040         <span class="comment">//members</span>
-<a name="l00041"></a>00041         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> cacheSize;
-<a name="l00042"></a>00042         unordered_map&lt;string, string&gt; map;
-<a name="l00043"></a>00043         vector&lt;URLNode&gt; list;
+<a name="l00037"></a><a class="code" href="classURLNode.html#a884b929b580ed24de145730114e45f01">00037</a>         <a class="code" href="classURLNode.html">URLNode</a>(<span class="keywordtype">string</span> urlInput, <span class="keywordtype">string</span> contentInput)
+<a name="l00038"></a>00038         {
+<a name="l00039"></a>00039                 url  = urlInput;
+<a name="l00040"></a>00040                 content = contentInput;
+<a name="l00041"></a>00041                 contentSize = contentInput.capacity();
+<a name="l00042"></a>00042         }
+<a name="l00043"></a>00043 };
 <a name="l00044"></a>00044 
-<a name="l00045"></a>00045         <span class="comment">//concrete implementations</span>
-<a name="l00046"></a>00046         <span class="keywordtype">void</span> insertIntoCache(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content);
-<a name="l00047"></a>00047         <span class="keywordtype">void</span> deleteFromCache();
-<a name="l00048"></a>00048         <span class="keywordtype">string</span> getFromCache(<span class="keywordtype">string</span> url);
-<a name="l00049"></a>00049         <span class="keywordtype">void</span> setMaxCacheSize(<span class="keywordtype">long</span> size);
+<a name="l00049"></a><a class="code" href="classAbstractCache.html">00049</a> <span class="keyword">class </span><a class="code" href="classAbstractCache.html" title="Abstract Cache.">AbstractCache</a> {
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051         <span class="comment">//abstract implementations</span>
-<a name="l00052"></a>00052         <span class="keyword">virtual</span> <span class="keywordtype">void</span> updateList(<span class="keywordtype">string</span> url) = 0;
-<a name="l00053"></a>00053         <span class="keyword">virtual</span> <span class="keywordtype">int</span> pickIndexForNextDeletion() = 0;
-<a name="l00054"></a>00054         <span class="keyword">virtual</span> <span class="keywordtype">void</span> insertIntoList(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content) = 0;
+<a name="l00051"></a>00051 <span class="keyword">public</span>:
+<a name="l00052"></a>00052         
+<a name="l00054"></a><a class="code" href="classAbstractCache.html#a5db4a215715082ca927f75fec6fe274c">00054</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="classAbstractCache.html#a5db4a215715082ca927f75fec6fe274c" title="Max Cache Size.">maxCacheSize</a>;
 <a name="l00055"></a>00055 
-<a name="l00056"></a>00056         <span class="keyword">virtual</span> ~<a class="code" href="classAbstractCache.html">AbstractCache</a>() = 0;
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058         <a class="code" href="classAbstractCache.html">AbstractCache</a>()
-<a name="l00059"></a>00059         {
-<a name="l00060"></a>00060                 maxCacheSize = MAX_CACHE_SIZE;
-<a name="l00061"></a>00061         }
-<a name="l00062"></a>00062 };
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 <span class="preprocessor">#endif</span>
+<a name="l00057"></a><a class="code" href="classAbstractCache.html#a3b7d8e12031d428787a75852370631e2">00057</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="classAbstractCache.html#a3b7d8e12031d428787a75852370631e2" title="Cache Size.">cacheSize</a>;
+<a name="l00058"></a>00058 
+<a name="l00060"></a><a class="code" href="classAbstractCache.html#a4ee0357340f21b0989bc8764db0fabce">00060</a>         unordered_map&lt;string, string&gt; <a class="code" href="classAbstractCache.html#a4ee0357340f21b0989bc8764db0fabce" title="Cache HashMap of &lt;URL,WebContent&gt;">map</a>;
+<a name="l00061"></a>00061 
+<a name="l00063"></a><a class="code" href="classAbstractCache.html#abe36acc627f10c65bfd04e3833011d7b">00063</a>         vector&lt;URLNode&gt; <a class="code" href="classAbstractCache.html#abe36acc627f10c65bfd04e3833011d7b" title="URL Priority Queue.">list</a>;
+<a name="l00064"></a>00064 
+<a name="l00066"></a>00066         <span class="keywordtype">void</span> insertIntoCache(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content);
+<a name="l00067"></a>00067 
+<a name="l00069"></a>00069         <span class="keywordtype">void</span> deleteFromCache();
+<a name="l00070"></a>00070 
+<a name="l00072"></a>00072         <span class="keywordtype">string</span> getFromCache(<span class="keywordtype">string</span> url);
+<a name="l00073"></a>00073         
+<a name="l00075"></a>00075         <span class="keywordtype">void</span> setMaxCacheSize(<span class="keywordtype">long</span> size);
+<a name="l00076"></a>00076 
+<a name="l00078"></a>00078         <span class="keyword">virtual</span> <span class="keywordtype">void</span> updateList(<span class="keywordtype">string</span> url) = 0;
+<a name="l00079"></a>00079 
+<a name="l00081"></a>00081         <span class="keyword">virtual</span> <span class="keywordtype">int</span> pickIndexForNextDeletion() = 0;
+<a name="l00082"></a>00082 
+<a name="l00084"></a>00084         <span class="keyword">virtual</span> <span class="keywordtype">void</span> insertIntoList(<span class="keywordtype">string</span> url, <span class="keywordtype">string</span> content) = 0;
+<a name="l00085"></a>00085 
+<a name="l00087"></a>00087         <span class="keyword">virtual</span> ~<a class="code" href="classAbstractCache.html" title="Abstract Cache.">AbstractCache</a>() = 0;
+<a name="l00088"></a>00088 
+<a name="l00090"></a><a class="code" href="classAbstractCache.html#a3a1cb850c9d9db8a4dd42744e1756da4">00090</a>         <a class="code" href="classAbstractCache.html" title="Abstract Cache.">AbstractCache</a>()
+<a name="l00091"></a>00091         {
+<a name="l00092"></a>00092                 <span class="comment">//Set a default max cache size</span>
+<a name="l00093"></a>00093                 maxCacheSize = MAX_CACHE_SIZE;
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095 };
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -152,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 18:25:51 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 17:53:35 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

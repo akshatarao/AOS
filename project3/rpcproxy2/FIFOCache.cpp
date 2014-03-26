@@ -1,6 +1,10 @@
 #include "FIFOCache.h"
 
 /**
+ *@brief - This file contains the implementation for the FIFO Cache Replacement Policy
+ */
+
+/**
  *@file FIFOCache.h
  */
 
@@ -10,7 +14,7 @@
 
 /**
  *@brief Update the Queue
- *@param URL
+ *@param url - URL
  *@returns none
  */
 void FIFOCache::updateList(string url){

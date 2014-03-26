@@ -79,25 +79,91 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">RPCProxyHandler Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="RPCProxyHandler" -->
+<p><ul>
+<li><a class="el" href="classRPCProxyHandler.html" title="RPCProxyHandler">RPCProxyHandler</a> </li>
+</ul>
+ 
+ <a href="classRPCProxyHandler.html#details">More...</a></p>
+
 <p><a href="classRPCProxyHandler-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a410b74fb33e3d8f86c6ef441eb3e941f"></a><!-- doxytag: member="RPCProxyHandler::RPCProxyHandler" ref="a410b74fb33e3d8f86c6ef441eb3e941f" args="()" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPCProxyHandler.html#a410b74fb33e3d8f86c6ef441eb3e941f">RPCProxyHandler</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13211f85624d234a58ece66412f845ab"></a><!-- doxytag: member="RPCProxyHandler::hello" ref="a13211f85624d234a58ece66412f845ab" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>hello</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b821c2866975f9d686e830df86095a4"></a><!-- doxytag: member="RPCProxyHandler::fetchURLContent" ref="a4b821c2866975f9d686e830df86095a4" args="(std::string &amp;_return, const std::string &amp;url)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fetchURLContent</b> (std::string &amp;_return, const std::string &amp;url)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPCProxyHandler.html#a4b821c2866975f9d686e830df86095a4">fetchURLContent</a> (std::string &amp;_return, const std::string &amp;url)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch Web Content for given URL.  <a href="#a4b821c2866975f9d686e830df86095a4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab02e49e5ab6b7c8e83ff3c411a5ff0f4"></a><!-- doxytag: member="RPCProxyHandler::printServerStats" ref="ab02e49e5ab6b7c8e83ff3c411a5ff0f4" args="()" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printServerStats</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4502c256cc2202280a3626080d2cc3ab"></a><!-- doxytag: member="RPCProxyHandler::WriteCallback" ref="a4502c256cc2202280a3626080d2cc3ab" args="(void *contents, size_t size, size_t nmemb, void *userp)" -->
 static size_t&#160;</td><td class="memItemRight" valign="bottom"><b>WriteCallback</b> (void *contents, size_t size, size_t nmemb, void *userp)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ac0df19d0b5b6f486593886f281cc37"></a><!-- doxytag: member="RPCProxyHandler::numberOfRequests" ref="a2ac0df19d0b5b6f486593886f281cc37" args="" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>numberOfRequests</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a584e1d2460a6d189e7830226d0d48ed3"></a><!-- doxytag: member="RPCProxyHandler::totalTime" ref="a584e1d2460a6d189e7830226d0d48ed3" args="" -->
+double&#160;</td><td class="memItemRight" valign="bottom"><b>totalTime</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a382e5666620ce07bdd771f62c2494110"></a><!-- doxytag: member="RPCProxyHandler::cacheHits" ref="a382e5666620ce07bdd771f62c2494110" args="" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>cacheHits</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a647a7727373b329adc985b59ca2710d5"></a><!-- doxytag: member="RPCProxyHandler::cacheRejections" ref="a647a7727373b329adc985b59ca2710d5" args="" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>cacheRejections</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75985d9116b06d96c6e7e23c10e1c12e"></a><!-- doxytag: member="RPCProxyHandler::cacheMisses" ref="a75985d9116b06d96c6e7e23c10e1c12e" args="" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>cacheMisses</b></td></tr>
 </table>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><ul>
+<li><a class="el" href="classRPCProxyHandler.html" title="RPCProxyHandler">RPCProxyHandler</a> </li>
+</ul>
+</div><hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a4b821c2866975f9d686e830df86095a4"></a><!-- doxytag: member="RPCProxyHandler::fetchURLContent" ref="a4b821c2866975f9d686e830df86095a4" args="(std::string &amp;_return, const std::string &amp;url)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classRPCProxyHandler.html#a4b821c2866975f9d686e830df86095a4">RPCProxyHandler::fetchURLContent</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>_return</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>url</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fetch Web Content for given URL. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_return</td><td>- Web Content is saved here </td></tr>
+    <tr><td class="paramname">url</td><td>- URL </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>- none </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>RPCProxyServer.cpp</li>
 </ul>
@@ -107,7 +173,7 @@ static size_t&#160;</td><td class="memItemRight" valign="bottom"><b>WriteCallbac
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,7 +185,7 @@ static size_t&#160;</td><td class="memItemRight" valign="bottom"><b>WriteCallbac
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 18:25:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 17:53:36 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

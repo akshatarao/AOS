@@ -19,22 +19,45 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classFIFOCache_a1ae7ca5adab1d06c341510f1f2fee299}{\hyperlink{classFIFOCache_a1ae7ca5adab1d06c341510f1f2fee299}{$\sim$\-F\-I\-F\-O\-Cache} ()}\label{classFIFOCache_a1ae7ca5adab1d06c341510f1f2fee299}
-
-\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
-\hypertarget{classFIFOCache_a12486ada6ceb70c77f3cd4f40f295928}{\hyperlink{classFIFOCache_a12486ada6ceb70c77f3cd4f40f295928}{\-F\-I\-F\-O\-Cache} ()}\label{classFIFOCache_a12486ada6ceb70c77f3cd4f40f295928}
-
-\begin{DoxyCompactList}\small\item\em \-Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classFIFOCache_a1ae7ca5adab1d06c341510f1f2fee299}{$\sim$\-F\-I\-F\-O\-Cache} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+\hyperlink{classFIFOCache_a12486ada6ceb70c77f3cd4f40f295928}{\-F\-I\-F\-O\-Cache} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
 void \hyperlink{classFIFOCache_a73b7632a308ed4813d8c7e03cf597d47}{update\-List} (string url)
-\begin{DoxyCompactList}\small\item\em \-Update the \-Queue. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Update the \-Webcontent \-Eviction \-Candidate \-Queue. \end{DoxyCompactList}\item 
 int \hyperlink{classFIFOCache_a16f6449563e0e83af7069406a14089e9}{pick\-Index\-For\-Next\-Deletion} ()
-\begin{DoxyCompactList}\small\item\em \-Select next candidate entry for eviction. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Select the next candidate to be evicted. \end{DoxyCompactList}\item 
 void \hyperlink{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}{insert\-Into\-List} (string url, string content)
-\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L to \-Back of \-F\-I\-F\-O \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Insert the \-U\-R\-L, \-Webcontent into the \-Cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
 \hyperlink{classFIFOCache}{\-F\-I\-F\-O\-Cache}. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classFIFOCache_a1ae7ca5adab1d06c341510f1f2fee299}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!$\sim$\-F\-I\-F\-O\-Cache@{$\sim$\-F\-I\-F\-O\-Cache}}
+\index{$\sim$\-F\-I\-F\-O\-Cache@{$\sim$\-F\-I\-F\-O\-Cache}!FIFOCache@{\-F\-I\-F\-O\-Cache}}
+\subsubsection[{$\sim$\-F\-I\-F\-O\-Cache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-F\-I\-F\-O\-Cache\-::$\sim$\-F\-I\-F\-O\-Cache} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFIFOCache_a1ae7ca5adab1d06c341510f1f2fee299}
+
+
+destructor 
+
+\-Destructor. \hypertarget{classFIFOCache_a12486ada6ceb70c77f3cd4f40f295928}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}}
+\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!FIFOCache@{\-F\-I\-F\-O\-Cache}}
+\subsubsection[{\-F\-I\-F\-O\-Cache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-F\-I\-F\-O\-Cache\-::\-F\-I\-F\-O\-Cache} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFIFOCache_a12486ada6ceb70c77f3cd4f40f295928}
+
+
+constructor 
+
+\-Constructor. 
 
 \subsection{\-Member \-Function \-Documentation}
 \hypertarget{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!insert\-Into\-List@{insert\-Into\-List}}
@@ -47,7 +70,9 @@ void \hyperlink{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}{insert\-Into\-
 )\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classFIFOCache_ae1255739ccdb46db5a3c5bb9cbc3d868}
 
 
-\-Insert \-U\-R\-L to \-Back of \-F\-I\-F\-O \-Queue. 
+\-Insert the \-U\-R\-L, \-Webcontent into the \-Cache. 
+
+\-Insert \-U\-R\-L to \-Back of \-F\-I\-F\-O \-Queue.
 
 
 \begin{DoxyParams}{\-Parameters}
@@ -61,7 +86,7 @@ none
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+\-Implements \hyperlink{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}{\-Abstract\-Cache}.
 
 \hypertarget{classFIFOCache_a16f6449563e0e83af7069406a14089e9}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
 \index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!FIFOCache@{\-F\-I\-F\-O\-Cache}}
@@ -72,14 +97,16 @@ none
 )\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classFIFOCache_a16f6449563e0e83af7069406a14089e9}
 
 
-\-Select next candidate entry for eviction. 
+\-Select the next candidate to be evicted. 
+
+\-Select next candidate entry for eviction.
 
 \begin{DoxyReturn}{\-Returns}
 \-Index of candidate for eviction 
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+\-Implements \hyperlink{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}{\-Abstract\-Cache}.
 
 \hypertarget{classFIFOCache_a73b7632a308ed4813d8c7e03cf597d47}{\index{\-F\-I\-F\-O\-Cache@{\-F\-I\-F\-O\-Cache}!update\-List@{update\-List}}
 \index{update\-List@{update\-List}!FIFOCache@{\-F\-I\-F\-O\-Cache}}
@@ -90,14 +117,16 @@ none
 )\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classFIFOCache_a73b7632a308ed4813d8c7e03cf597d47}
 
 
-\-Update the \-Queue. 
+\-Update the \-Webcontent \-Eviction \-Candidate \-Queue. 
+
+\-Update the \-Queue.
 
 \begin{DoxyAuthor}{\-Author}
 \-Spoorthi \-Ravi 
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{\-Parameters}
-{\em \-U\-R\-L} & \\
+{\em url} & -\/ \-U\-R\-L \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{\-Returns}
@@ -105,7 +134,7 @@ none
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+\-Implements \hyperlink{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}{\-Abstract\-Cache}.
 
 
 

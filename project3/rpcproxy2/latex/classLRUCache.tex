@@ -19,22 +19,45 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}{\hyperlink{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}{\-L\-R\-U\-Cache} ()}\label{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}
-
-\begin{DoxyCompactList}\small\item\em \-L\-R\-U \-Constructor. \end{DoxyCompactList}\item 
-\hypertarget{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}{\hyperlink{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}{$\sim$\-L\-R\-U\-Cache} ()}\label{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}
-
-\begin{DoxyCompactList}\small\item\em \-L\-R\-U \-Destructor. \end{DoxyCompactList}\item 
+\hyperlink{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}{\-L\-R\-U\-Cache} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}{$\sim$\-L\-R\-U\-Cache} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
 void \hyperlink{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}{update\-List} (string url)
-\begin{DoxyCompactList}\small\item\em \-Update the \-List. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Update the \-Candidate \-Queue with \-U\-R\-L. \end{DoxyCompactList}\item 
 int \hyperlink{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}{pick\-Index\-For\-Next\-Deletion} ()
-\begin{DoxyCompactList}\small\item\em \-Select \-Next \-Candidate for \-Eviction. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Select the next candidate for eviction. \end{DoxyCompactList}\item 
 void \hyperlink{classLRUCache_aa767d58be45c61f2e9a1073343465e16}{insert\-Into\-List} (string url, string content)
-\begin{DoxyCompactList}\small\item\em \-Insert \-U\-R\-L to back of the \-Queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Insert the web content eviction candidate into queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{\-Detailed \-Description}
 \hyperlink{classLRUCache}{\-L\-R\-U\-Cache}. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}}
+\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!LRUCache@{\-L\-R\-U\-Cache}}
+\subsubsection[{\-L\-R\-U\-Cache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-L\-R\-U\-Cache\-::\-L\-R\-U\-Cache} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLRUCache_a6f624ad11516bc5c8b56ab19250902bb}
+
+
+constructor 
+
+\-L\-R\-U \-Constructor. \hypertarget{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!$\sim$\-L\-R\-U\-Cache@{$\sim$\-L\-R\-U\-Cache}}
+\index{$\sim$\-L\-R\-U\-Cache@{$\sim$\-L\-R\-U\-Cache}!LRUCache@{\-L\-R\-U\-Cache}}
+\subsubsection[{$\sim$\-L\-R\-U\-Cache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-L\-R\-U\-Cache\-::$\sim$\-L\-R\-U\-Cache} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLRUCache_ac841ed5b67e603f2878c26ea7555385f}
+
+
+destructor 
+
+\-L\-R\-U \-Destructor. 
 
 \subsection{\-Member \-Function \-Documentation}
 \hypertarget{classLRUCache_aa767d58be45c61f2e9a1073343465e16}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!insert\-Into\-List@{insert\-Into\-List}}
@@ -47,7 +70,9 @@ void \hyperlink{classLRUCache_aa767d58be45c61f2e9a1073343465e16}{insert\-Into\-L
 )\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLRUCache_aa767d58be45c61f2e9a1073343465e16}
 
 
-\-Insert \-U\-R\-L to back of the \-Queue. 
+\-Insert the web content eviction candidate into queue. 
+
+\-Insert \-U\-R\-L to back of the \-Queue.
 
 
 \begin{DoxyParams}{\-Parameters}
@@ -61,7 +86,7 @@ none
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+\-Implements \hyperlink{classAbstractCache_a910756174d1ee21eac16a4be3f7c881a}{\-Abstract\-Cache}.
 
 \hypertarget{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}}
 \index{pick\-Index\-For\-Next\-Deletion@{pick\-Index\-For\-Next\-Deletion}!LRUCache@{\-L\-R\-U\-Cache}}
@@ -72,14 +97,16 @@ none
 )\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLRUCache_ab5e4e2db90274ce42e32f0ea466db0ef}
 
 
-\-Select \-Next \-Candidate for \-Eviction. 
+\-Select the next candidate for eviction. 
+
+\-Select \-Next \-Candidate for \-Eviction.
 
 \begin{DoxyReturn}{\-Returns}
 index of next candidate for eviction 
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+\-Implements \hyperlink{classAbstractCache_ae9fe168b0b9167c27b94b4a3a1be788c}{\-Abstract\-Cache}.
 
 \hypertarget{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}{\index{\-L\-R\-U\-Cache@{\-L\-R\-U\-Cache}!update\-List@{update\-List}}
 \index{update\-List@{update\-List}!LRUCache@{\-L\-R\-U\-Cache}}
@@ -90,7 +117,9 @@ index of next candidate for eviction
 )\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classLRUCache_a9ade7fe6ec5353a5b4259ad48929122b}
 
 
-\-Update the \-List. 
+\-Update the \-Candidate \-Queue with \-U\-R\-L. 
+
+\-Update the \-List.
 
 \begin{DoxyAuthor}{\-Author}
 \-Spoorthi \-Ravi 
@@ -105,7 +134,7 @@ none
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{classAbstractCache}{\-Abstract\-Cache}.
+\-Implements \hyperlink{classAbstractCache_a67552fbca85ce7dbc7e2c553b1036884}{\-Abstract\-Cache}.
 
 
 

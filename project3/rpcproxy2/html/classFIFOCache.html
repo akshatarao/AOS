@@ -94,7 +94,7 @@ Inheritance diagram for FIFOCache:</div>
  <div class="center">
   <img src="classFIFOCache.png" usemap="#FIFOCache_map" alt=""/>
   <map id="FIFOCache_map" name="FIFOCache_map">
-<area href="classAbstractCache.html" alt="AbstractCache" shape="rect" coords="0,0,96,24"/>
+<area href="classAbstractCache.html" title="Abstract Cache." alt="AbstractCache" shape="rect" coords="0,0,96,24"/>
 </map>
  </div></div>
 
@@ -102,22 +102,59 @@ Inheritance diagram for FIFOCache:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ae7ca5adab1d06c341510f1f2fee299"></a><!-- doxytag: member="FIFOCache::~FIFOCache" ref="a1ae7ca5adab1d06c341510f1f2fee299" args="()" -->
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#a1ae7ca5adab1d06c341510f1f2fee299">~FIFOCache</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12486ada6ceb70c77f3cd4f40f295928"></a><!-- doxytag: member="FIFOCache::FIFOCache" ref="a12486ada6ceb70c77f3cd4f40f295928" args="()" -->
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#a12486ada6ceb70c77f3cd4f40f295928">FIFOCache</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#a1ae7ca5adab1d06c341510f1f2fee299">~FIFOCache</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor  <a href="#a1ae7ca5adab1d06c341510f1f2fee299"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#a12486ada6ceb70c77f3cd4f40f295928">FIFOCache</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="#a12486ada6ceb70c77f3cd4f40f295928"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#a73b7632a308ed4813d8c7e03cf597d47">updateList</a> (string url)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the Queue.  <a href="#a73b7632a308ed4813d8c7e03cf597d47"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the Webcontent Eviction Candidate Queue.  <a href="#a73b7632a308ed4813d8c7e03cf597d47"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#a16f6449563e0e83af7069406a14089e9">pickIndexForNextDeletion</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Select next candidate entry for eviction.  <a href="#a16f6449563e0e83af7069406a14089e9"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the next candidate to be evicted.  <a href="#a16f6449563e0e83af7069406a14089e9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFIFOCache.html#ae1255739ccdb46db5a3c5bb9cbc3d868">insertIntoList</a> (string url, string content)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert URL to Back of FIFO Queue.  <a href="#ae1255739ccdb46db5a3c5bb9cbc3d868"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert the URL, Webcontent into the Cache.  <a href="#ae1255739ccdb46db5a3c5bb9cbc3d868"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classFIFOCache.html" title="FIFOCache.">FIFOCache</a>. </p>
-</div><hr/><h2>Member Function Documentation</h2>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a1ae7ca5adab1d06c341510f1f2fee299"></a><!-- doxytag: member="FIFOCache::~FIFOCache" ref="a1ae7ca5adab1d06c341510f1f2fee299" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFIFOCache.html#a1ae7ca5adab1d06c341510f1f2fee299">FIFOCache::~FIFOCache</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>destructor </p>
+<p>Destructor. </p>
+
+</div>
+</div>
+<a class="anchor" id="a12486ada6ceb70c77f3cd4f40f295928"></a><!-- doxytag: member="FIFOCache::FIFOCache" ref="a12486ada6ceb70c77f3cd4f40f295928" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFIFOCache.html#a12486ada6ceb70c77f3cd4f40f295928">FIFOCache::FIFOCache</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>constructor </p>
+<p>Constructor. </p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ae1255739ccdb46db5a3c5bb9cbc3d868"></a><!-- doxytag: member="FIFOCache::insertIntoList" ref="ae1255739ccdb46db5a3c5bb9cbc3d868" args="(string url, string content)" -->
 <div class="memitem">
 <div class="memproto">
@@ -143,7 +180,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Insert URL to Back of FIFO Queue. </p>
+<p>Insert the URL, Webcontent into the Cache. </p>
+<p>Insert URL to Back of FIFO Queue.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">url</td><td>- URL </td></tr>
@@ -153,7 +191,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>none </dd></dl>
 
-<p>Implements <a class="el" href="classAbstractCache.html">AbstractCache</a>.</p>
+<p>Implements <a class="el" href="classAbstractCache.html#a910756174d1ee21eac16a4be3f7c881a">AbstractCache</a>.</p>
 
 </div>
 </div>
@@ -171,10 +209,11 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Select next candidate entry for eviction. </p>
+<p>Select the next candidate to be evicted. </p>
+<p>Select next candidate entry for eviction.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Index of candidate for eviction </dd></dl>
 
-<p>Implements <a class="el" href="classAbstractCache.html">AbstractCache</a>.</p>
+<p>Implements <a class="el" href="classAbstractCache.html#ae9fe168b0b9167c27b94b4a3a1be788c">AbstractCache</a>.</p>
 
 </div>
 </div>
@@ -193,17 +232,18 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Update the Queue. </p>
+<p>Update the Webcontent Eviction Candidate Queue. </p>
+<p>Update the Queue.</p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Spoorthi Ravi </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">URL</td><td></td></tr>
+    <tr><td class="paramname">url</td><td>- URL </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>none </dd></dl>
 
-<p>Implements <a class="el" href="classAbstractCache.html">AbstractCache</a>.</p>
+<p>Implements <a class="el" href="classAbstractCache.html#a67552fbca85ce7dbc7e2c553b1036884">AbstractCache</a>.</p>
 
 </div>
 </div>
@@ -217,7 +257,7 @@ Public Member Functions</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -229,7 +269,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 22 2014 18:25:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 17:53:36 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
